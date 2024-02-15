@@ -23,24 +23,26 @@ GPTX has been tested and verified to function seamlessly on various platforms in
 
 ### Windows
 
-1. Clone the repository:
+1. Open Command Prompt (CMD)
+
+2. Clone the repository:
     ```bash
     git clone https://github.com/BlackTechX011/GPTX.git
     ```
 
-2. Navigate to the GPTX directory:
+3. Navigate to the GPTX directory:
     ```bash
     cd GPTX
     ```
 
-3. To set up the API key, visit [this link](https://platform.openai.com/api-keys) and obtain your API key.
+4. To set up the API key, visit [this link](https://platform.openai.com/api-keys) and obtain your API key.
 
-4. Run the setup script:
+5. Run the setup script:
     ```bash
     python3 setup.py
     ```
 
-5. To initiate the program, execute the following command:
+6. To initiate the program, execute the following command:
     ```bash
     python3 GPTX.py
     ```
