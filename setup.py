@@ -24,8 +24,8 @@ def setup_api_key():
 
 if __name__ == "__main__":
     if os.path.exists("key.txt"):
-        overwrite = input("A key file already exists. Do you want to overwrite it? (yes/no): ")
-        if overwrite.lower() == "yes":
+        overwrite = input("A key file already exists. Do you want to overwrite it? (y/n): ")
+        if overwrite.lower() == "y":
             setup_api_key()
         else:
             print("Setup canceled.")
