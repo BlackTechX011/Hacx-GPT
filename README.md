@@ -1,6 +1,6 @@
 # Hecx GPT
 
- Hecx GPT is a powerful, uncensored AI designed by BlackTechX and inspired by WormGPT.
+ Hecx GPT is a powerful, fully uncensored AI designed by BlackTechX and inspired by WormGPT.
 
 ## Disclaimer
 
