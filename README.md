@@ -16,7 +16,8 @@ By using Hacx, you agree to adhere to ethical guidelines and legal regulations g
 To enhance the professionalism and clarity of your Hacx documentation, here's a revised version:
 
 ---
-
+## available
+Now, Hacx GPT is available on FlowGPT! Check it out at: [flowgpt.com/p/hacx-gpt](https://flowgpt.com/p/hacx-gpt)
 ## Installation
 
 Hacx has been tested and verified to function seamlessly on various platforms including Windows, Kali Linux, and Termux.
