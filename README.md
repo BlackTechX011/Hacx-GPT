@@ -26,9 +26,9 @@ Hacx has been tested and verified to function seamlessly on various platforms in
 
 1. Open Command Prompt (CMD)
 2. install pyarmor
-```
-pip install pyarmor
-```
+   ```
+   pip install pyarmor
+   ```
 3. Clone the repository:
     ```bash
     git clone https://github.com/BlackTechX011/Hacx-GPT.git
@@ -67,9 +67,9 @@ From here <a href="https://f-droid.org/repo/com.termux_118.apk">Link</a>
 
 ### Termux
 1.  install pyarmor
-```
-pip install pyarmor
-```
+    ```
+    pip install pyarmor
+    ```
 2. Clone the repository:
     ```bash
     git clone https://github.com/BlackTechX011/Hacx-GPT.git
@@ -93,9 +93,9 @@ pip install pyarmor
     ```
 ### Linux 
 1.  install pyarmor
-```
-pip install pyarmor
-```
+    ```
+    pip install pyarmor
+    ```
 2.  Clone the repository:
     ```bash
     git clone https://github.com/BlackTechX011/Hacx-GPT.git
