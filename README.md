@@ -25,25 +25,28 @@ Hacx has been tested and verified to function seamlessly on various platforms in
 ### Windows
 
 1. Open Command Prompt (CMD)
-
-2. Clone the repository:
+2. install pyarmor
+```
+pip install pyarmor
+```
+3. Clone the repository:
     ```bash
     git clone https://github.com/BlackTechX011/Hacx-GPT.git
     ```
 
-3. Navigate to the Hacx directory:
+4. Navigate to the Hacx directory:
     ```bash
     cd Hacx-GPT
     ```
 
-4. To set up the API key, visit [this link](https://platform.openai.com/api-keys) and obtain your API key.
+5. To set up the API key, visit [this link](https://platform.openai.com/api-keys) and obtain your API key.
 
-5. Run the setup script:
+6. Run the setup script:
     ```bash
     python3 setup.py
     ```
 
-6. To initiate the program, execute the following command:
+7. To initiate the program, execute the following command:
     ```bash
     python3 Hacx.py
     ```
@@ -63,48 +66,55 @@ You can download the latest termux app and install it
 From here <a href="https://f-droid.org/repo/com.termux_118.apk">Link</a>
 
 ### Termux
-
-1. Clone the repository:
+1.  install pyarmor
+```
+pip install pyarmor
+```
+2. Clone the repository:
     ```bash
     git clone https://github.com/BlackTechX011/Hacx-GPT.git
     ```
 
-2. Navigate to the Hacx directory:
+3. Navigate to the Hacx directory:
     ```bash
     cd Hacx-GPT
     ```
 
-3. Obtain your API key from [this link](https://platform.openai.com/api-keys).
+4. Obtain your API key from [this link](https://platform.openai.com/api-keys).
 
-4. Run the setup script:
+5. Run the setup script:
     ```bash
     python3 setup.py
     ```
 
-5. To start the program, enter the following command:
+6. To start the program, enter the following command:
     ```bash
     python3 Hacx.py
     ```
 ### Linux 
-1. Clone the repository:
+1.  install pyarmor
+```
+pip install pyarmor
+```
+2.  Clone the repository:
     ```bash
     git clone https://github.com/BlackTechX011/Hacx-GPT.git
     ```
 
-2. Navigate to the Hacx directory:
+3. Navigate to the Hacx directory:
     ```bash
     cd Hacx-GPT
     ```
 
-3. Obtain your API key from [this link](https://platform.openai.com/api-keys).
+4. Obtain your API key from [this link](https://platform.openai.com/api-keys).
 
 
-4. Setup API Key:
+5. Setup API Key:
 Run the setup script to configure your API key:
    ```bash
    python3 setup.py
    ```
-5. To start the program, enter the following command:
+6. To start the program, enter the following command:
     ```bash
     python3 Hacx.py
     ```
