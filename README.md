@@ -85,7 +85,7 @@ From here <a href="https://f-droid.org/repo/com.termux_118.apk">Link</a>
     ```bash
     python3 Hacx.py
     ```
-### Kali Linux 
+### Linux 
 1. Clone the repository:
     ```bash
     git clone https://github.com/BlackTechX011/Hacx-GPT.git
