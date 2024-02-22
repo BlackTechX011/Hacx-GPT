@@ -94,6 +94,15 @@ python3 main.py
 
 ---
 ___
-### API key
-Obtain your API key from [this link](https://platform.openai.com/api-keys).
+## Get the Token
+
+You'll get that in the telegram channel !
+
+## Features
+* `Can do anything you want !!`
+
+* `All Ai chatbot and all questions will be answered in goodflow`
+## Contact Us
+* `If you have any feedback or queries`
+* `Telegram: @BlackTechX`
 ___
