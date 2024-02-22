@@ -107,6 +107,6 @@ You'll get that in the telegram channel !
 * `Telegram: @BlackTechX`
 ## Telegram Channel
 
-* `All updates will be posted here !`
-[t.me/BlackTechXTeam](https://t.me/BlackTechXTeam)
+* `All updates will be posted here !` 
+* [t.me/BlackTechXTeam](https://t.me/BlackTechXTeam)
 ___
