@@ -21,7 +21,12 @@ To enhance the professionalism and clarity of your Hacx documentation, here's a 
 Now, Hacx GPT is available on FlowGPT! Check it out at: [flowgpt.com/p/hacx-gpt](https://flowgpt.com/p/hacx-gpt)
 ## Installation
 
-Hacx has been tested and verified to function seamlessly on various platforms including Linux and Termux.
+Hacx has been tested and verified to function seamlessly on various platforms including :
+<ul>
+  <li>Kali Linux</li>
+  <li>Termux</li>
+  <li>Ubuntu</li>  
+</ul>
 
 ### Termux
 `Termux App is no longer recieving updates on playstore`
@@ -38,37 +43,53 @@ You can download the latest termux app and install it
 
 From here <a href="https://f-droid.org/repo/com.termux_118.apk">Link</a>
 
-### Termux
+### For Termux
 
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/BlackTechX011/Hacx-GPT.git
-    ```
+Update the packages
+```bash
+pkg up -y
+```
+Install some dependencies
+```bash
+pkg install git wget python -y
+```
+Clone the repository:
+```bash
+git clone https://github.com/BlackTechX011/Hacx-GPT.git
+```
 
-3. Navigate to the Hacx directory:
-    ```bash
-    cd Hacx-GPT
-    ```
+Navigate to the Hacx directory:
+```bash
+cd Hacx-GPT
+```
 
-4. Run the script:
-    ```bash
-    python3 main.py
-    ```
-### Linux 
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/BlackTechX011/Hacx-GPT.git
-    ```
+Run the script:
+```bash
+python3 main.py
+```
+### For Debian-based GNU/Linux distributions
 
-3. Navigate to the Hacx directory:
-    ```bash
-    cd Hacx-GPT
-    ```
+Update the packages
+```bash
+apt-get update; apt-get upgrade -y
+```
+Install some dependencies
+```bash
+apt-get install git wget python3 -y
+```
+Clone the repository:
+```bash
+git clone https://github.com/BlackTechX011/Hacx-GPT.git
+```
+Navigate to the Hacx directory:
+ ```bash
+ cd Hacx-GPT
+ ```
 
-4. Run the script:
-    ```bash
-    python3 main.py
-    ```
+Run the script:
+```bash
+python3 main.py
+```
 
 
 ---
