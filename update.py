@@ -12,25 +12,24 @@ __________.__                 __   ___________           .__    ____  ___
                                                                                                                                                     
 
     """)
-def fetch_latest_main():
-    url = "https://raw.githubusercontent.com/BlackTechX011/Hacx-GPT/main/main.py"
+
+def fetch_latest_file(url, filename):
     response = requests.get(url)
     if response.status_code == 200:
-        return response.text
+        with open(filename, "w") as file:
+            file.write(response.text)
+        print(f"{filename} updated successfully.")
     else:
-        print("Failed to fetch the latest version of main.py")
-        return None
-
-def update_main(content):
-    with open("main.py", "w") as file:
-        file.write(content)
-    print("main.py updated successfully.")
+        print(f"Failed to fetch the latest version of {filename}")
 
 if __name__ == "__main__":
-    latest_main_content = fetch_latest_main()
-    if latest_main_content:
-        update_main(latest_main_content)
-    else:
-        print("Exiting due to failure in fetching the latest version of main.py")
+    # Update main.py
+    main_url = "https://raw.githubusercontent.com/BlackTechX011/Hacx-GPT/main/main.py"
+    fetch_latest_file(main_url, "main.py")
+
+    # Update setup.py
+    setup_url = "https://raw.githubusercontent.com/BlackTechX011/Hacx-GPT/main/setup.py"
+    fetch_latest_file(setup_url, "setup.py")
+
     # Exit after updating
     exit()
