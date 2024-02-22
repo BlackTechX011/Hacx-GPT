@@ -105,4 +105,8 @@ You'll get that in the telegram channel !
 ## Contact Us
 * `If you have any feedback or queries`
 * `Telegram: @BlackTechX`
+## Telegram Channel
+
+* `All updates will be posted here !`
+[t.me/BlackTechXTeam](https://t.me/BlackTechXTeam)
 ___
