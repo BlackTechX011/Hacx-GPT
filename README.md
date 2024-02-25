@@ -102,6 +102,10 @@ You'll get that in the telegram channel !
 * `Can do anything you want !!`
 
 * `All Ai chatbot and all questions will be answered in goodflow`
+
+## Special Thanks to MrSanZz
+
+- GitHub Profile: [MrSanZz](https://github.com/MrSanZz/)
 ## Contact Us
 * `If you have any feedback or queries`
 * `Telegram: @BlackTechX`
