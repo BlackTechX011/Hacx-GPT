@@ -15,4 +15,4 @@ if __name__ == "__main__":
     main_url = "https://raw.githubusercontent.com/BlackTechX011/Hacx-GPT/main/main.py"
     fetch_latest_file(main_url, "main_updated.py")
 
-    os.replace("main_updated.py", "V3")
+    os.replace("Hacx GPT V3", "main.py")
