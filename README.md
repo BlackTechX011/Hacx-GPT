@@ -1,6 +1,6 @@
 # Hecx GPT
 
- Hecx GPT is a powerful, fully uncensored AI designed by BlackTechX and inspired by WormGPT.
+ Hecx GPT is a powerful, fully uncensored AI designed by BlackTechX and based on WormGPT.
 
 
 ## Disclaimer
@@ -62,7 +62,10 @@ Navigate to the Hacx directory:
 ```bash
 cd Hacx-GPT
 ```
-
+Now Install the Requirements
+```bash
+pip install -r requirements.txt
+```
 Run the script:
 ```bash
 python3 main.py
@@ -85,7 +88,10 @@ Navigate to the Hacx directory:
  ```bash
  cd Hacx-GPT
  ```
-
+Now Install the Requirements
+```bash
+pip install -r requirements.txt
+```
 Run the script:
 ```bash
 python3 main.py
@@ -94,18 +100,14 @@ python3 main.py
 
 ---
 ___
-## Get the Token
-
-You'll get that in the telegram channel !
-
 ## Features
 * `Can do anything you want !!`
 
 * `All Ai chatbot and all questions will be answered in goodflow`
+## Get the Token
 
-## Special Thanks to MrSanZz
+You'll get that in the telegram channel !
 
-- GitHub Profile: [MrSanZz](https://github.com/MrSanZz/)
 ## Contact Us
 * `If you have any feedback or queries`
 * `Telegram: @BlackTechX`
