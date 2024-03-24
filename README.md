@@ -114,5 +114,5 @@ You'll get that in the telegram channel !
 ## Telegram Channel
 
 * `All updates will be posted here !` 
-- [![Telegram](https://img.shields.io/badge/Chat-Telegram-blue?style=for-the-badge&logo=telegram)](https://t.me/BlackTechXTeam)
+- [![Telegram](https://img.shields.io/badge/Chat-Telegram-blue?style=for-the-badge&logo=telegram)](https://t.me/Its_BlackTech)
 ___
