@@ -1,108 +1,91 @@
-# Hecx GPT
 
- Hecx GPT is a powerful, fully uncensored AI designed by BlackTechX and based on WormGPT.
+# Hecx GPT 🤖
 
+Welcome to Hecx GPT, a powerful and uncensored AI designed by BlackTechX and based on WormGPT.
 
-## Disclaimer
+## Disclaimer 🚫
 
-Please be aware of the following disclaimer before using this tool:
+Before diving into the world of Hacx, please take note of the following:
 
-While using Hacx, it is important to understand that:
+- Any actions you take using this tool are solely your responsibility. Neither the creators of Hacx nor any other individuals or entities associated with it can be held accountable for misuse or illegal activities.
+- Hacx is intended for educational purposes only, allowing you to explore natural language processing technologies.
 
-- Any actions taken using this tool are solely the responsibility of the user. Neither the creators of Hacx nor any other individuals or entities associated with it can be held responsible for any misuse or illegal activities performed with the tool.
-- Hacx is intended for educational and learning purposes only. It is designed to facilitate understanding and exploration of natural language processing technologies.
+By using Hacx, you agree to adhere to ethical guidelines and legal regulations. Any misuse or illegal activity with Hacx is strictly prohibited.
 
-By using Hacx, you agree to adhere to ethical guidelines and legal regulations governing the use of such tools. Any misuse or illegal activity conducted with Hacx is strictly prohibited.
+## Other Version 🚀
 
-To enhance the professionalism and clarity of your Hacx documentation, here's a revised version:
+We've got thrilling news! A new variant of Hacx GPT is now operational on FlowGPT. This version comes with additional features and improvements that enhance your AI experience. Don't miss out—give it a whirl at: flowgpt.com/p/hacx-gpt
 
----
-## available
-Now, Hacx GPT is available on FlowGPT! Check it out at: [flowgpt.com/p/hacx-gpt](https://flowgpt.com/p/hacx-gpt)
-## Installation
+## Installation Guide 🛠️
 
-Hacx has been tested and verified to function seamlessly on various platforms including :
-<ul>
-  <li>Kali Linux</li>
-  <li>Termux</li>
-  <li>Ubuntu</li>  
-</ul>
+Hacx has been tested and verified to work seamlessly on various platforms, including:
 
-### Termux
-`Termux App is no longer recieving updates on playstore`
-`due to recently introduced Google Play policy` 
-  
+- Kali Linux
+- Termux
+- Ubuntu
 
-DON'T WORRY   
+### Termux Quick Start 📲
 
-`We have a solution for that!`
+**Note:** The Termux App no longer receives updates on the Play Store due to new Google Play policies. But don't worry—we've got a solution!
 
+1. Download the latest Termux app from [here](https://f-droid.org/repo/com.termux_118.apk).
+2. Install the app.
 
+For Termux setup:
 
-You can download the latest termux app and install it
+1. Update your package list:
+   ```bash
+   pkg up -y
+   ```
+2. Install essential dependencies:
+   ```bash
+   pkg install git wget python -y
+   ```
+3. Clone the Hacx repository:
+   ```bash
+   git clone https://github.com/BlackTechX011/Hacx-GPT.git
+   ```
+4. Navigate to the Hacx directory:
+   ```bash
+   cd Hacx-GPT
+   ```
+5. Install the required packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
+6. Launch Hacx:
+   ```bash
+   python3 main.py
+   ```
 
-From here <a href="https://f-droid.org/repo/com.termux_118.apk">Link</a>
+### Debian-based GNU/Linux Setup 🐧
 
-### For Termux
+1. Update your system:
+   ```bash
+   apt-get update; apt-get upgrade -y
+   ```
+2. Install necessary dependencies:
+   ```bash
+   apt-get install git wget python3 -y
+   ```
+3. Clone the Hacx repository:
+   ```bash
+   git clone https://github.com/BlackTechX011/Hacx-GPT.git
+   ```
+4. Navigate to the Hacx directory:
+   ```bash
+   cd Hacx-GPT
+   ```
+5. Install the required packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
+6. Run Hacx:
+   ```bash
+   python3 main.py
+   ```
 
-Update the packages
-```bash
-pkg up -y
-```
-Install some dependencies
-```bash
-pkg install git wget python -y
-```
-Clone the repository:
-```bash
-git clone https://github.com/BlackTechX011/Hacx-GPT.git
-```
+## Core Features 🔥
 
-Navigate to the Hacx directory:
-```bash
-cd Hacx-GPT
-```
-Now Install the Requirements
-```bash
-pip install -r requirements.txt
-```
-Run the script:
-```bash
-python3 main.py
-```
-### For Debian-based GNU/Linux distributions
-
-Update the packages
-```bash
-apt-get update; apt-get upgrade -y
-```
-Install some dependencies
-```bash
-apt-get install git wget python3 -y
-```
-Clone the repository:
-```bash
-git clone https://github.com/BlackTechX011/Hacx-GPT.git
-```
-Navigate to the Hacx directory:
- ```bash
- cd Hacx-GPT
- ```
-Now Install the Requirements
-```bash
-pip install -r requirements.txt
-```
-Run the script:
-```bash
-python3 main.py
-```
-
-
----
-___
-## Features
-* `Can do anything you want !!`
-
-* `All Ai chatbot and all questions will be answered in goodflow`
-
-___
+- Hacx can handle anything you throw at it!
+- Engage in seamless AI chatbot conversations with Hacx, all delivered in a smooth flow.
