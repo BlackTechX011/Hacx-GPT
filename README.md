@@ -1,4 +1,4 @@
-
+![HacxGPT](https://github.com/BlackTechX011/Hacx-GPT/blob/main/logo_HacxGPT.png)
 # Hecx GPT 🤖
 
 Welcome to Hecx GPT, a powerful and uncensored AI designed by BlackTechX and based on WormGPT.
