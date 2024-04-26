@@ -89,3 +89,6 @@ For Termux setup:
 
 - Hacx can handle anything you throw at it!
 - Engage in seamless AI chatbot conversations with Hacx, all delivered in a smooth flow.
+
+## screenshot:
+![screenshot](https://github.com/BlackTechX011/Hacx-GPT/blob/main/screenshot.png)
