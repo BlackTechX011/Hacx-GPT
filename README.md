@@ -12,9 +12,9 @@ Before diving into the world of Hacx, please take note of the following:
 
 By using Hacx, you agree to adhere to ethical guidelines and legal regulations. Any misuse or illegal activity with Hacx is strictly prohibited.
 
-## Other Version 🚀
+## HacxGPT on HuggingChat 🚀
 
-We've got thrilling news! A new variant of Hacx GPT is now operational on FlowGPT. This version comes with additional features and improvements that enhance your AI experience. Don't miss out—give it a whirl at: flowgpt.com/p/hacx-gpt
+We've got thrilling news! A new variant of Hacx GPT is now operational on HuggingChat. This version comes with additional features and improvements that enhance your AI experience. Don't miss out—give it a whirl at: [https://hf.co/chat/assistant/66373dea24d425b77de8df01](https://hf.co/chat/assistant/66373dea24d425b77de8df01)
 
 ## Installation Guide 🛠️
 
