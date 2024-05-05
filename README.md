@@ -17,7 +17,7 @@ By using Hacx, you agree to adhere to ethical guidelines and legal regulations. 
 We've got thrilling news! A new variant of Hacx GPT is now operational on HuggingChat. This version comes with additional features and improvements that enhance your AI experience. Don't miss out—give it a whirl at: [https://hf.co/chat/assistant/66373dea24d425b77de8df01](https://hf.co/chat/assistant/66373dea24d425b77de8df01)
 
 ## Installation Guide 🛠️
-
+### [Installation Video Guide](https://youtu.be/MIGSUM4PGh4)
 Hacx has been tested and verified to work seamlessly on various platforms, including:
 
 - Kali Linux
