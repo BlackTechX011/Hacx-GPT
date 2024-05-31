@@ -90,5 +90,7 @@ For Termux setup:
 - Hacx can handle anything you throw at it!
 - Engage in seamless AI chatbot conversations with Hacx, all delivered in a smooth flow.
 
+
+# [![Buy Me A Coffee](https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=&slug=BlackTechX&button_colour=5FaFFF&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00)](https://www.buymeacoffee.com/BlackTechX)
 ## screenshot:
 ![screenshot](https://github.com/BlackTechX011/Hacx-GPT/blob/main/screenshot.png)
