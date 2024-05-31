@@ -1,104 +1,140 @@
-![HacxGPT](https://github.com/BlackTechX011/Hacx-GPT/blob/main/logo_HacxGPT.png)
+<div align="center">
 
-# Hacx GPT 🤖
+  <img src="https://github.com/BlackTechX011/Hacx-GPT/blob/main/logo_HacxGPT.png" alt="Hacx GPT Logo" width="200" height="auto" />
+  <h1>HacxGPT</h1>
+  
+  <p>
+    The cutting-edge AI developed by BlackTechX, inspired by WormGPT, designed to push the boundaries of natural language processing.
+  </p>
+  
+  <!-- Badges -->
+  <p>
+    <a href="https://github.com/BlackTechX011/Hacx-GPT" title="Go to GitHub repo"><img src="https://img.shields.io/static/v1?label=BlackTechX&message=Hacx-GPT&color=blue&logo=github" alt="BlackTechX - Hacx-GPT"></a>
+    <a href="https://github.com/BlackTechX011/Hacx-GPT"><img src="https://img.shields.io/github/stars/BlackTechX011/Hacx-GPT?style=social" alt="stars - Hacx-GPT"></a>
+    <a href="https://github.com/BlackTechX011/Hacx-GPT"><img src="https://img.shields.io/github/forks/BlackTechX011/Hacx-GPT?style=social" alt="forks - Hacx-GPT"></a>
+  </p>
+   
+  <h4>
+    <a href="https://www.GitHub.com/BlackTechX011/">GITHUB</a>
+    <span> · </span>
+    <a href="https://www.instagram.com/BlackTechX011/">INSTAGRAM</a>
+    <span> · </span>
+    <a href="https://www.youtube.com/c/BlackTechX011">YOUTUBE</a>
+ 
+  </h4>
+</div>
 
-Welcome to Hacx GPT, a powerful and uncensored AI designed by BlackTechX and based on WormGPT.
+<br />
 
-## Disclaimer 🚫
+<!-- Table of Contents -->
+# 📚 Table of Contents
 
-Before diving into the world of Hacx, please take note of the following:
+- [About the Project](#star2-about-the-project)
+- [Features](#dart-features)
+- [Installation Guide](#toolbox-installation-guide)
+  - [Termux Quick Start](#iphone-termux-quick-start)
+  - [Debian-based GNU/Linux Setup](#penguin-debian-based-gnulinux-setup)
+- [Usage](#eyes-usage)
+- [Contributing](#wave-contributing)
+- [License](#warning-license)
 
-- Any actions you take using this tool are solely your responsibility. Neither the creators of Hacx nor any other individuals or entities associated with it can be held accountable for misuse or illegal activities.
-- Hacx is intended for educational purposes only, allowing you to explore natural language processing technologies.
 
-By using Hacx, you agree to adhere to ethical guidelines and legal regulations. Any misuse or illegal activity with Hacx is strictly prohibited.
+<!-- About the Project -->
+## 🌟 About the Project
 
-## HacxGPT on HuggingChat 🚀
+Hacx GPT is an advanced broken AI model designed to facilitate seamless and powerful interactions, pushing the limits of what AI can achieve in natural language processing.
 
-We've got thrilling news! A new variant of Hacx GPT is now operational on HuggingChat. This version comes with additional features and improvements that enhance your AI experience. Don't miss out—give it a whirl at: [HuggingChat](https://hf.co/chat/assistant/66373dea24d425b77de8df01)
+<!-- Features -->
+## 🎯 Features
 
-## Installation Guide 🛠️
+- **Powerful AI Conversations:** all questions will be answered in goodflow.
+- **Broken AI:** Can do anything you want !!
+<!-- Installation Guide -->
+## 🛠️ Installation Guide
 
 ### [Installation Video Guide](https://youtu.be/MIGSUM4PGh4)
 
-Hacx has been tested and verified to work seamlessly on various platforms, including:
+Hacx GPT has been rigorously tested on multiple platforms, including:
 
-- Kali Linux
-- Termux
-- Ubuntu
+- **Kali Linux**
+- **Termux**
+- **Ubuntu**
 
-### Termux Quick Start 📲
+### 📱 Termux Quick Start
 
-**Note:** The Termux App no longer receives updates on the Play Store due to new Google Play policies. But don't worry—we've got a solution!
+**Note:** The Termux app is no longer updated on the Play Store due to new Google Play policies. No worries—we've got you covered!
 
 1. Download the latest Termux app from [F-Droid](https://f-droid.org/repo/com.termux_118.apk).
 2. Install the app.
 
-For Termux setup:
+#### Termux Setup
 
-1. Update your package list:
+1. **Update your package list:**
    ```bash
    pkg up -y
    ```
-2. Install essential dependencies:
+2. **Install essential dependencies:**
    ```bash
    pkg install git wget python -y
    ```
-3. Clone the Hacx repository:
+3. **Clone the Hacx repository:**
    ```bash
    git clone https://github.com/BlackTechX011/Hacx-GPT.git
    ```
-4. Navigate to the Hacx directory:
+4. **Navigate to the Hacx directory:**
    ```bash
    cd Hacx-GPT
    ```
-5. Install the required packages:
+5. **Install the required packages:**
    ```bash
    pip install -r requirements.txt
    ```
-6. Launch Hacx:
+6. **Launch Hacx:**
    ```bash
    python3 main.py
    ```
 
-### Debian-based GNU/Linux Setup 🐧
+### 🐧 Debian-based GNU/Linux Setup
 
-1. Update your system:
+1. **Update your system:**
    ```bash
    apt-get update; apt-get upgrade -y
    ```
-2. Install necessary dependencies:
+2. **Install necessary dependencies:**
    ```bash
    apt-get install git wget python3 -y
    ```
-3. Clone the Hacx repository:
+3. **Clone the Hacx repository:**
    ```bash
    git clone https://github.com/BlackTechX011/Hacx-GPT.git
    ```
-4. Navigate to the Hacx directory:
+4. **Navigate to the Hacx directory:**
    ```bash
    cd Hacx-GPT
    ```
-5. Install the required packages:
+5. **Install the required packages:**
    ```bash
    pip install -r requirements.txt
    ```
-6. Run Hacx:
+6. **Run Hacx:**
    ```bash
    python3 main.py
    ```
 
-## Core Features 🔥
+<!-- Usage -->
+## 👀 Usage
 
-- Engage in seamless AI chatbot conversations with Hacx, all delivered in a smooth flow.
-- Hacx can handle anything you throw at it!
+Explore the vast capabilities of Hacx GPT by launching it on your preferred platform and interacting with its advanced AI features.
 
-## Support the Project ☕
+<!-- Contributing -->
+## 👋 Contributing
 
-If you find this project useful and would like to support its development, consider buying me a coffee:
+<a href="https://github.com/BlackTechX011/Hacx-GPT/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=BlackTechX011/Hacx-GPT" />
+</a>
 
-[![Buy Me A Coffee](https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=&slug=BlackTechX&button_colour=5FaFFF&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00)](https://www.buymeacoffee.com/BlackTechX)
+<!-- License -->
+## ⚠️ License
 
-## Screenshot 📸
+Distributed under the MIT License. See `LICENSE.txt` for more information.
 
-![screenshot](https://github.com/BlackTechX011/Hacx-GPT/blob/main/screenshot.png)
