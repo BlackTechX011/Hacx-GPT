@@ -19,7 +19,7 @@
     <span> · </span>
     <a href="https://www.instagram.com/BlackTechX011/">INSTAGRAM</a>
     <span> · </span>
-    <a href="https://www.youtube.com/c/BlackTechX011">YOUTUBE</a>
+    <a href="https://www.youtube.com/@BlackTechX_">YOUTUBE</a>
  
   </h4>
 </div>
