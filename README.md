@@ -1,5 +1,6 @@
 ![HacxGPT](https://github.com/BlackTechX011/Hacx-GPT/blob/main/logo_HacxGPT.png)
-# Hecx GPT 🤖
+
+# Hacx GPT 🤖
 
 Welcome to Hacx GPT, a powerful and uncensored AI designed by BlackTechX and based on WormGPT.
 
@@ -14,10 +15,12 @@ By using Hacx, you agree to adhere to ethical guidelines and legal regulations. 
 
 ## HacxGPT on HuggingChat 🚀
 
-We've got thrilling news! A new variant of Hacx GPT is now operational on HuggingChat. This version comes with additional features and improvements that enhance your AI experience. Don't miss out—give it a whirl at: [https://hf.co/chat/assistant/66373dea24d425b77de8df01](https://hf.co/chat/assistant/66373dea24d425b77de8df01)
+We've got thrilling news! A new variant of Hacx GPT is now operational on HuggingChat. This version comes with additional features and improvements that enhance your AI experience. Don't miss out—give it a whirl at: [HuggingChat](https://hf.co/chat/assistant/66373dea24d425b77de8df01)
 
 ## Installation Guide 🛠️
+
 ### [Installation Video Guide](https://youtu.be/MIGSUM4PGh4)
+
 Hacx has been tested and verified to work seamlessly on various platforms, including:
 
 - Kali Linux
@@ -28,7 +31,7 @@ Hacx has been tested and verified to work seamlessly on various platforms, inclu
 
 **Note:** The Termux App no longer receives updates on the Play Store due to new Google Play policies. But don't worry—we've got a solution!
 
-1. Download the latest Termux app from [here](https://f-droid.org/repo/com.termux_118.apk).
+1. Download the latest Termux app from [F-Droid](https://f-droid.org/repo/com.termux_118.apk).
 2. Install the app.
 
 For Termux setup:
@@ -87,10 +90,15 @@ For Termux setup:
 
 ## Core Features 🔥
 
-- Hacx can handle anything you throw at it!
 - Engage in seamless AI chatbot conversations with Hacx, all delivered in a smooth flow.
+- Hacx can handle anything you throw at it!
 
+## Support the Project ☕
 
-# [![Buy Me A Coffee](https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=&slug=BlackTechX&button_colour=5FaFFF&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00)](https://www.buymeacoffee.com/BlackTechX)
-## screenshot:
+If you find this project useful and would like to support its development, consider buying me a coffee:
+
+[![Buy Me A Coffee](https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=&slug=BlackTechX&button_colour=5FaFFF&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00)](https://www.buymeacoffee.com/BlackTechX)
+
+## Screenshot 📸
+
 ![screenshot](https://github.com/BlackTechX011/Hacx-GPT/blob/main/screenshot.png)
