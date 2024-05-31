@@ -27,32 +27,34 @@
 <br />
 
 <!-- Table of Contents -->
-# 📚 Table of Contents
+# :notebook_with_decorative_cover: Table of Contents
 
 - [About the Project](#star2-about-the-project)
 - [Features](#dart-features)
-- [Installation Guide](#toolbox-installation-guide)
+- [Installation Guide](#gear-installation)
   - [Termux Quick Start](#iphone-termux-quick-start)
   - [Debian-based GNU/Linux Setup](#penguin-debian-based-gnulinux-setup)
 - [Usage](#eyes-usage)
+  - [screenshot](#camera-screenshot)
 - [Contributing](#wave-contributing)
 - [License](#warning-license)
 
 
 <!-- About the Project -->
-## 🌟 About the Project
+## :star2: About the Project
 
 Hacx GPT is an advanced broken AI model designed to facilitate seamless and powerful interactions, pushing the limits of what AI can achieve in natural language processing.
 
 <!-- Features -->
-## 🎯 Features
+## :dart: Features
 
 - **Powerful AI Conversations:** all questions will be answered in goodflow.
 - **Broken AI:** Can do anything you want !!
-<!-- Installation Guide -->
-## 🛠️ Installation Guide
 
-### [Installation Video Guide](https://youtu.be/MIGSUM4PGh4)
+<!-- Installation -->
+## :gear: Installation
+
+#### [Installation Video Guide](https://youtu.be/MIGSUM4PGh4)
 
 Hacx GPT has been rigorously tested on multiple platforms, including:
 
@@ -60,7 +62,7 @@ Hacx GPT has been rigorously tested on multiple platforms, including:
 - **Termux**
 - **Ubuntu**
 
-### 📱 Termux Quick Start
+### :iphone: Termux Quick Start
 
 **Note:** The Termux app is no longer updated on the Play Store due to new Google Play policies. No worries—we've got you covered!
 
@@ -94,7 +96,7 @@ Hacx GPT has been rigorously tested on multiple platforms, including:
    python3 main.py
    ```
 
-### 🐧 Debian-based GNU/Linux Setup
+### :penguin: Debian-based GNU/Linux Setup
 
 1. **Update your system:**
    ```bash
@@ -122,19 +124,21 @@ Hacx GPT has been rigorously tested on multiple platforms, including:
    ```
 
 <!-- Usage -->
-## 👀 Usage
+## :eyes: Usage
 
 Explore the vast capabilities of Hacx GPT by launching it on your preferred platform and interacting with its advanced AI features.
+### :camera: screenshot
+![screenshot](https://github.com/BlackTechX011/Hacx-GPT/blob/main/screenshot.png)
 
 <!-- Contributing -->
-## 👋 Contributing
+## :wave: Contributing
 
 <a href="https://github.com/BlackTechX011/Hacx-GPT/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=BlackTechX011/Hacx-GPT" />
 </a>
 
 <!-- License -->
-## ⚠️ License
+## :warning: License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
