@@ -44,6 +44,8 @@
 ## :star2: About the Project
 
 Hacx GPT is an advanced broken AI model designed to facilitate seamless and powerful interactions, pushing the limits of what AI can achieve in natural language processing.
+#### Note:
+Its open Source version of HacxGPT NOT real HacxGPT... https://blacktechx011.github.io/HacxGPT-Website/
 
 <!-- Features -->
 ## :dart: Features
