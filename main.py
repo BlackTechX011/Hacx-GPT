@@ -27,7 +27,7 @@ class Colors:
     BLUE = "\033[0;34m"
     PURPLE = "\033[0;35m"
     CYAN = "\033[0;36m"
-    WHITE = "\033[0;37m"
+     = "\033[0;37m"
     B_BLACK = "\033[1;30m"
     B_RED = "\033[1;31m"
     B_GREEN = "\033[1;32m"
@@ -35,7 +35,7 @@ class Colors:
     B_BLUE = "\033[1;34m"
     B_PURPLE = "\033[1;35m"
     B_CYAN = "\033[1;36m"
-    B_WHITE = "\033[1;37m"
+    B_ = "\033[1;37m"
     U_BLACK = "\033[4;30m"
     U_RED = "\033[4;31m"
     U_GREEN = "\033[4;32m"
@@ -43,7 +43,7 @@ class Colors:
     U_BLUE = "\033[4;34m"
     U_PURPLE = "\033[4;35m"
     U_CYAN = "\033[4;36m"
-    U_WHITE = "\033[4;37m"
+    U_ = "\033[4;37m"
     BG_BLACK = "\033[40m"
     BG_RED = "\033[41m"
     BG_GREEN = "\033[42m"
@@ -51,7 +51,7 @@ class Colors:
     BG_BLUE = "\033[44m"
     BG_PURPLE = "\033[45m"
     BG_CYAN = "\033[46m"
-    BG_WHITE = "\033[47m"
+    BG_ = "\033[47m"
     RESET = "\033[0m"
     R = "\033[1;31m"
     G = "\033[1;32m"
@@ -81,12 +81,12 @@ def Type(data):
     print(Fore.LIGHTBLUE_EX + "└─ " + w + "\033[1;37m" + data)
 
 
-def blacktechx_type_text(text: str, color: str = colors.WHITE, end: str = '\n', speed: float = 0.02) -> None:
+def blacktechx_type_text(text: str, color: str = colors., end: str = '\n', speed: float = 0.02) -> None:
     """
       Prints text with a typing effect.
       Args:
           text (str): The text to print.
-          color (str, optional): The color of the text. Defaults to WHITE.
+          color (str, optional): The color of the text. Defaults to .
           end (str, optional): The end character. Defaults to '\n'.
           speed (float, optional): The typing speed. Defaults to 0.02.
     """
@@ -203,11 +203,11 @@ def blacktechx_hacx_banner() -> None:
 
 def display_options() -> None:
     """Displays the main menu options."""
-    Type(Fore.LIGHTCYAN_EX + "[ " + white + "1" + Fore.LIGHTCYAN_EX + " ]" + w + "\033[1;37m BlackTechX " + Fore.LIGHTCYAN_EX + "||" + Fore.WHITE + " Hacx GPT")
-    Type(Fore.LIGHTCYAN_EX + "[ " + white + "2" + Fore.LIGHTCYAN_EX + " ]" + w + "\033[1;37m BlackTechX " + Fore.LIGHTCYAN_EX + "||" + Fore.WHITE + " Key Configure")
-    Type(Fore.LIGHTCYAN_EX + "[ " + white + "3" + Fore.LIGHTCYAN_EX + " ]" + w + "\033[1;37m BlackTechX " + Fore.LIGHTCYAN_EX + "||" + Fore.WHITE + " About us")
-    Type(Fore.LIGHTCYAN_EX + "[ " + white + "4" + Fore.LIGHTCYAN_EX + " ]" + w + "\033[1;37m BlackTechX " + Fore.LIGHTCYAN_EX + "||" + Fore.WHITE + " Update")
-    Type(Fore.LIGHTCYAN_EX + "[ " + white + "5" + Fore.LIGHTCYAN_EX + " ]" + w + "\033[1;37m BlackTechX " + Fore.LIGHTCYAN_EX + "||" + Fore.WHITE + " Exit")
+    Type(Fore.LIGHTCYAN_EX + "[ " + colors.WHITE + "1" + Fore.LIGHTCYAN_EX + " ]" + colors.WHITE + "\033[1;37m BlackTechX " + Fore.LIGHTCYAN_EX + "||" + Fore.WHITE + " Hacx GPT")
+    Type(Fore.LIGHTCYAN_EX + "[ " + colors.WHITE + "2" + Fore.LIGHTCYAN_EX + " ]" + colors.WHITE + "\033[1;37m BlackTechX " + Fore.LIGHTCYAN_EX + "||" + Fore.WHITE + " Key Configure")
+    Type(Fore.LIGHTCYAN_EX + "[ " + colors.WHITE + "3" + Fore.LIGHTCYAN_EX + " ]" + colors.WHITE + "\033[1;37m BlackTechX " + Fore.LIGHTCYAN_EX + "||" + Fore.WHITE + " About us")
+    Type(Fore.LIGHTCYAN_EX + "[ " + colors.WHITE + "4" + Fore.LIGHTCYAN_EX + " ]" + colors.WHITE + "\033[1;37m BlackTechX " + Fore.LIGHTCYAN_EX + "||" + Fore.WHITE + " Update")
+    Type(Fore.LIGHTCYAN_EX + "[ " + colors.WHITE + "5" + Fore.LIGHTCYAN_EX + " ]" + colors.WHITE + "\033[1;37m BlackTechX " + Fore.LIGHTCYAN_EX + "||" + Fore.WHITE + " Exit")
     blacktechx_backslash()
 
 
@@ -355,7 +355,7 @@ class Main:
                 blacktechx_type_text(f'Error generating response: {e}', color=colors.RED)
             blacktechx_backslash()
             ask_again = blacktechx_question("Do you want to ask again or return to the main menu? [y/n]", color=colors.CYAN,
-                                      input_color=colors.WHITE)
+                                      input_color=colors.)
             if ask_again.lower() in ['n', 'no']:
                 break
         blacktechx_hacx_banner()
@@ -365,9 +365,9 @@ class Main:
     def configure_api_key(self) -> None:
         """Configures the OpenAI API key."""
         blacktechx_banner_()
-        blacktechx_type_text('Please get your API keys from <FreshAccount recommended>: https://platform.openai.com/account/api-keys', color=colors.WHITE)
+        blacktechx_type_text('Please get your API keys from <FreshAccount recommended>: https://platform.openai.com/account/api-keys', color=colors.)
         blacktechx_backslash()
-        api_key = blacktechx_question("Enter your OpenAI API key:", color=colors.CYAN, input_color=colors.WHITE)
+        api_key = blacktechx_question("Enter your OpenAI API key:", color=colors.CYAN, input_color=colors.)
         blacktechx_backslash()
         with open('key.txt', 'w') as f:
             f.write(str(api_key))
