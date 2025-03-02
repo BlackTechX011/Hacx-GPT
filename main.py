@@ -78,15 +78,16 @@ def blacktechx_backslash() -> None:
     print('\n')
 
 def Type(data):
-    print(Fore.LIGHTBLUE_EX + "└─ " + w + "\033[1;37m" + data)
+    print(Fore.LIGHTBLUE_EX + "└─ " + colors.WHITE + "\033[1;37m" + data)
 
 
-def blacktechx_type_text(text: str, color: str = colors., end: str = '\n', speed: float = 0.02) -> None:
+# Fix 1: In the blacktechx_type_text function (around line 121)
+def blacktechx_type_text(text: str, color: str = colors.WHITE, end: str = '\n', speed: float = 0.02) -> None:
     """
       Prints text with a typing effect.
       Args:
           text (str): The text to print.
-          color (str, optional): The color of the text. Defaults to .
+          color (str, optional): The color of the text. Defaults to WHITE.
           end (str, optional): The end character. Defaults to '\n'.
           speed (float, optional): The typing speed. Defaults to 0.02.
     """
@@ -95,6 +96,8 @@ def blacktechx_type_text(text: str, color: str = colors., end: str = '\n', speed
         sys.stdout.flush()
         time.sleep(speed)
     print(colors.RESET, end=end)
+
+
 
 
 def blacktechx_question(prompt: str, color: str = colors.CYAN, input_color: str = colors.WHITE) -> str:
@@ -355,7 +358,7 @@ class Main:
                 blacktechx_type_text(f'Error generating response: {e}', color=colors.RED)
             blacktechx_backslash()
             ask_again = blacktechx_question("Do you want to ask again or return to the main menu? [y/n]", color=colors.CYAN,
-                                      input_color=colors.)
+                                input_color=colors.WHITE)
             if ask_again.lower() in ['n', 'no']:
                 break
         blacktechx_hacx_banner()
