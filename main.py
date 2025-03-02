@@ -368,9 +368,9 @@ class Main:
     def configure_api_key(self) -> None:
         """Configures the OpenAI API key."""
         blacktechx_banner_()
-        blacktechx_type_text('Please get your API keys from <FreshAccount recommended>: https://platform.openai.com/account/api-keys', color=colors.)
+        blacktechx_type_text('Please get your API keys from <FreshAccount recommended>: https://platform.openai.com/account/api-keys', color=colors.WHITE)
         blacktechx_backslash()
-        api_key = blacktechx_question("Enter your OpenAI API key:", color=colors.CYAN, input_color=colors.)
+        api_key = blacktechx_question("Enter your OpenAI API key:", color=colors.CYAN, input_color=colors.WHITE)
         blacktechx_backslash()
         with open('key.txt', 'w') as f:
             f.write(str(api_key))
