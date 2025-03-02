@@ -12,8 +12,15 @@ except ImportError:
     _ = os.system('pip install pwinput requests colorama openai python-dotenv' if os.name == 'nt' else 'pip3 install pwinput requests colorama openai python-dotenv')
 
 
+    # Now import them after installation
+import colorama
+import openai
+from pwinput import pwinput
+from colorama import Fore
+from dotenv import load_dotenv
+import requests
 
-
+# Now load_dotenv() will be defined
 load_dotenv()
 
 
