@@ -242,7 +242,8 @@ def get_completion(prompt: str, api_key: str, model: str = "gpt-3.5-turbo") -> s
             temperature=0,
         )
         return response.choices[0].message["content"]
-    except openai.error.OpenAIError as e:
+    except Exception as e:
+        # Use a generic exception handler instead of specific OpenAI error
         raise Exception(f"OpenAI API error: {e}")
 
 
