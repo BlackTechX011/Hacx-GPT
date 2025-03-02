@@ -360,7 +360,7 @@ class Main:
             blacktechx_backslash()
             try:
                 response = hacxgpt.generate_response(user_question)
-                blacktechx_type_text(response, color=colors.LIGHTBLUE, speed=0.01)
+                blacktechx_type_text(response, color=colors.BLUE, speed=0.01)
             except Exception as e:
                 blacktechx_type_text(f'Error generating response: {e}', color=colors.RED)
             blacktechx_backslash()
