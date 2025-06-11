@@ -179,6 +179,13 @@ The first time you run it, you will be prompted to enter your API key. It will b
 
 ---
 
+## :star: Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=BlackTechX011/Hacx-GPT&type=Date)](https://star-history.com/#BlackTechX011/Hacx-GPT&Date)
+
+
+---
+
 ## :wave: Contributing
 
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
