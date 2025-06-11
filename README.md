@@ -42,7 +42,7 @@ Here is a glimpse of the HacxGPT framework in action.
 
 ![HacxGPT Demo Screenshot](https://github.com/BlackTechX011/Hacx-GPT/blob/main/img/home.png)
 
-*(A live demo video or GIF would be even more impactful here!)*
+
 
 ---
 
