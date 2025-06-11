@@ -253,7 +253,7 @@ class ChatApp:
         api_key = os.getenv(Config.API_KEY_NAME)
 
         if not api_key:
-            self.ui.display_message("Setup Required", "DeepSeek API key (`sk-or-...`) not found.", "yellow")
+            self.ui.display_message("Setup Required", "API key (`sk-or-...`) not found.", "yellow")
             if self.ui.get_input("Configure it now? (y/n)").lower() in ['y', 'yes']:
                 return self._configure_key()
             return False
@@ -276,7 +276,7 @@ class ChatApp:
     def _configure_key(self) -> bool:
         self.ui.clear_screen()
         self.ui.display_banner()
-        self.ui.display_message("API Key Configuration", "Enter your DeepSeek API key (it starts with `sk-or-...`).", "green")
+        self.ui.display_message("API Key Configuration", "Enter your API key (it starts with `sk-or-...`).", "green")
         # pwinput needs standard colorama codes for its prompt
         api_key = pwinput(prompt=f"{colorama.Fore.YELLOW}╚═> {colorama.Fore.WHITE}Paste key: {colorama.Style.RESET_ALL}", mask='*')
 
