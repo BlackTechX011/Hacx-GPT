@@ -1,4 +1,5 @@
-colorama
-openai==0.28.0
-requests
-pwinput
+openai>=1.0.0
+colorama>=0.4.6
+pwinput>=1.0.3
+python-dotenv>=1.0.0
+rich>=13.3.5
