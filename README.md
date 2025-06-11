@@ -4,7 +4,7 @@
 <div align="center">
 
   <a href="https://github.com/BlackTechX011/Hacx-GPT">
-    <img src="https://github.com/BlackTechX011/Hacx-GPT/blob/main/img/logo_HacxGPT.png" alt="Hacx GPT Logo" width="250" />
+    <img src="https://github.com/BlackTechX011/Hacx-GPT/blob/main/img/HacxGPT.png" alt="Hacx GPT Logo" width="250" />
   </a>
 
   # HacxGPT
