@@ -77,16 +77,15 @@ class Config:
 
     # UI Colors
     class colors:
-        TITLE = colorama.Fore.CYAN + colorama.Style.BRIGHT
-        PROMPT_BORDER = colorama.Fore.YELLOW
-        PROMPT_TEXT = colorama.Fore.WHITE + colorama.Style.BRIGHT
-        ASSISTANT_BORDER = colorama.Fore.CYAN
-        ASSISTANT_TEXT = colorama.Fore.LIGHTBLUE_EX
-        INFO_BORDER = colorama.Fore.GREEN
-        WARNING_BORDER = colorama.Fore.YELLOW
-        ERROR_BORDER = colorama.Fore.RED
-        SYSTEM_TEXT = colorama.Fore.MAGENTA
-        RESET = colorama.Style.RESET_ALL
+        TITLE = "cyan"
+        PROMPT_BORDER = "yellow"
+        PROMPT_TEXT = "white"
+        ASSISTANT_BORDER = "cyan"
+        ASSISTANT_TEXT = "bright_blue"
+        INFO_BORDER = "green"
+        WARNING_BORDER = "yellow"
+        ERROR_BORDER = "red"
+        SYSTEM_TEXT = "magenta"
 
 # --- User Interface Class (Major Redesign) ---
 # Add these imports to the top of your script
@@ -369,3 +368,4 @@ This is HacxGPT designed and devloped by [bold]BlackTechX[/bold].
 if __name__ == "__main__":
     app = ChatApp()
     app.run()
+
