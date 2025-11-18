@@ -32,7 +32,7 @@ colorama.init(autoreset=True)
 _PROVIDERS = {
     "openrouter": {
         "BASE_URL": "https://openrouter.ai/api/v1",
-        "MODEL_NAME": "deepseek/deepseek-chat-v3-0324:free",
+        "MODEL_NAME": "deepseek/deepseek-r1-0528-qwen3-8b:free",
     },
     "deepseek": {
         "BASE_URL": "https://api.deepseek.com",
