@@ -8,6 +8,8 @@ from rich.panel import Panel
 from rich.markdown import Markdown
 from rich.text import Text
 from rich.live import Live
+if os.name == "posix":
+    import readline # Allows arrow controls for input boxes on Linux/Mac systems
 
 # --- Dependency Management ---
 try:
