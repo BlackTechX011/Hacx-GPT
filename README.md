@@ -10,7 +10,7 @@
   # HacxGPT
 
   <p>
-    <strong>An advanced AI framework inspired by WormGPT, engineered to explore the frontiers of language model interactions.</strong>
+    <strong>An advanced AI framework, engineered to explore the frontiers of language model interactions.</strong>
   </p>
   
   <!-- Badges -->
