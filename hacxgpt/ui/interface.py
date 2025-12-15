@@ -13,11 +13,22 @@ from ..config import Config
 from ..core.extractor import CodeExtractor
 from .banner import Banner
 
+from prompt_toolkit import PromptSession
+from prompt_toolkit.styles import Style
+from prompt_toolkit.history import FileHistory
+from rich.rule import Rule
+
 class UI:
     """Advanced Terminal User Interface using Rich"""
     
     def __init__(self):
         self.console = Console()
+        # Create a style for prompt_toolkit that matches our theme
+        self.pt_style = Style.from_dict({
+            'prompt': 'ansiyellow bold',
+        })
+        # Initialize session with history
+        self.session = PromptSession(history=FileHistory('.hacx_history'))
     
     def clear(self):
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -47,49 +58,58 @@ class UI:
     def show_msg(self, title: str, content: str, color: str = "white"):
         self.console.print(Panel(content, title=f"[bold]{title}[/]", border_style=color))
 
-    def get_input(self, label: str = "COMMAND") -> str:
-        prompt_style = Config.Colors.USER_PROMPT
-        self.console.print(f"[{prompt_style}]┌──({label})-[~][/]")
-        return self.console.input(f"[{prompt_style}]└─> [/]")
+    def get_input(self, label: str = "COMMAND", multiline: bool = False) -> str:
+        """
+        Get input using prompt_toolkit.
+        If multiline is True, user presses Esc+Enter or Alt+Enter to submit.
+        """
+        prompt_text = [
+            ('class:prompt', f"┌──({label})-[~]\n└─> ")
+        ]
+        
+        try:
+            # We construct the prompt text manually for visual style
+            self.console.print(f"[bold yellow]┌──({label})-[~][/]")
+            
+            user_input = self.session.prompt(
+                "└─> ",
+                style=self.pt_style,
+                multiline=multiline,
+                prompt_continuation=lambda width, line_number, is_soft_wrap: '.' * (width - 1) + ' '
+            )
+            return user_input
+        except KeyboardInterrupt:
+            raise
+        except EOFError:
+            return "/exit"
 
     def stream_markdown(self, title: str, content_generator):
         """
         Renders Markdown content in real-time as it streams.
+        No panels are used to avoid copy-paste issues with borders.
         """
         full_response = ""
         
+        self.console.print(Rule(f"[bold cyan]{title}[/bold cyan]", style="cyan"))
+        
         with Live(
-            Panel(Spinner("dots", text="Decryption in progress..."), title=title, border_style="cyan"),
+            Spinner("dots", text="Decryption in progress...", style="cyan"),
             console=self.console,
-            refresh_per_second=12,
-            transient=False 
+            refresh_per_second=10,
+            transient=True
         ) as live:
             
             for chunk in content_generator:
                 full_response += chunk
-                
-                # Clean format for display
-                display_text = full_response.replace("[HacxGPT]:", "").replace("[CODE]:", "").strip()
-                if not display_text: display_text = "..." 
-
-                md = Markdown(display_text, code_theme=Config.CODE_THEME)
-                
-                live.update(
-                    Panel(
-                        md, 
-                        title=f"[bold cyan]{title}[/bold cyan] [dim](Stream Active)[/dim]", 
-                        border_style="cyan"
-                    )
-                )
+                live.update(Spinner("dots", text=f"Receiving... ({len(full_response)} bytes)", style="cyan"))
             
-            display_text = full_response.replace("[HacxGPT]:", "").replace("[CODE]:", "").strip()
-            live.update(
-                Panel(
-                    Markdown(display_text, code_theme=Config.CODE_THEME), 
-                    title=f"[bold green]{title}[/bold green] [bold]✓[/]", 
-                    border_style="green"
-                )
-            )
+        # Clean format for display
+        display_text = full_response.replace("[HacxGPT]:", "").replace("[CODE]:", "").strip()
+        
+        # Render Markdown directly to console without panel
+        md = Markdown(display_text, code_theme=Config.CODE_THEME)
+        self.console.print(md)
+        self.console.print(Rule(style="dim cyan"))
         
         return full_response
 
@@ -179,3 +199,4 @@ class UI:
                     break
             except:
                 pass
+
