@@ -143,7 +143,8 @@ If you prefer to install manually, follow these steps.
     ```
 3.  **Install Python dependencies:**
     ```bash
-    pip install -r requirements.txt
+    # Install dependencies
+    pip install -e .
     ```
 </details>
 
@@ -158,7 +159,7 @@ You can easily switch between API providers.
 3.  Change the value to either `"openrouter"` or `"deepseek"`.
 
     ```python
-    # HacxGPT.py
+    # hacxgpt/Config.py
 
     # Change this value to "deepseek" or "openrouter"
     API_PROVIDER = "openrouter" 
@@ -169,10 +170,13 @@ You can easily switch between API providers.
 
 ## :eyes: Usage
 
-Once installation and configuration are complete, run the application with this simple command:
+
+Run the application directly:
 
 ```bash
-python3 HacxGPT.py
+hacxgpt
+# OR
+python -m hacxgpt.main
 ```
 
 The first time you run it, you will be prompted to enter your API key. It will be saved locally for future sessions.
