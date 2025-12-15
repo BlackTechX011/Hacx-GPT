@@ -69,11 +69,12 @@ class App:
     def run_chat(self):
         if not self.brain: return
         self.ui.banner()
-        self.ui.show_msg("Connected", "HacxGPT Uplink Established. Type '/help' for commands.", "green")
+        self.ui.show_msg("Connected", "HacxGPT Uplink Established.\nType '/help' for commands.\n[dim]Tip: Use Alt+Enter or Esc+Enter for newlines.[/]", "green")
         
         while True:
             try:
-                prompt = self.ui.get_input("HACX-GPT")
+                # Enable multiline for chat
+                prompt = self.ui.get_input("HACX-GPT", multiline=True)
                 if not prompt.strip(): continue
                 
                 if prompt.lower() == '/exit': return
@@ -175,3 +176,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
