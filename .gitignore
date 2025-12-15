@@ -1,60 +1,8 @@
-# HacxGPT Specific Files
+__pycache__/
+*.pyc
+.env
 .hacx
 hacxgpt_code_output/
-
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
 build/
-develop-eggs/
 dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-pip-wheel-metadata/
-share/python-wheels/
 *.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-
-# Virtual Environment
-venv/
-env/
-ENV/
-env.bak/
-venv.bak/
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-.DS_Store
-
-# Logs
-*.log
-
-# Environment variables (backup)
-.env
-.env.local
-.env.*.local
-
-# Testing
-.pytest_cache/
-.coverage
-htmlcov/
-
-# OS
-Thumbs.db
-desktop.ini
