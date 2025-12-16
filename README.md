@@ -154,7 +154,7 @@ If you prefer to install manually, follow these steps.
 
 You can easily switch between API providers.
 
-1.  Open the `HacxGPT.py` file in a text editor.
+1.  Open the `hacxgpt/config.py` file in a text editor.
 2.  Locate the `API_PROVIDER` variable at the top of the file.
 3.  Change the value to either `"openrouter"` or `"deepseek"`.
 
