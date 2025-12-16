@@ -33,6 +33,33 @@ def check_dependencies():
             # Re-execute the script
             os.execv(sys.executable, ['python'] + sys.argv)
         except Exception as e:
-            print(f"[\033[91m-\033[0m] Failed to install dependencies: {e}")
             print("Please manually run: pip install " + " ".join(missing_pip_names))
             sys.exit(1)
+
+def clear_screen():
+    """Clears the terminal screen (Cross-platform)."""
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+def get_char() -> str:
+    """
+    Reads a single character from stdin (Cross-platform).
+    Returns the character as a string.
+    """
+    if os.name == 'nt':
+        import msvcrt
+        try:
+            return msvcrt.getch().decode('utf-8')
+        except UnicodeDecodeError:
+            return '\x00' # Return null char in case of weird keypress
+    else:
+        import tty
+        import termios
+        fd = sys.stdin.fileno()
+        old_settings = termios.tcgetattr(fd)
+        try:
+            tty.setraw(sys.stdin.fileno())
+            ch = sys.stdin.read(1)
+        finally:
+            termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+        return ch
+
