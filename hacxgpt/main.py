@@ -135,8 +135,8 @@ class App:
         self.ui.console.print(Panel(md, title="[bold]Manifesto / README[/]", border_style="cyan", padding=(1, 2)))
         
         self.ui.console.print("\n[dim]Press any key to return...[/]")
-        import msvcrt
-        msvcrt.getch()
+        from .utils.system import get_char
+        get_char()
 
     def start(self):
         # Optional: Check dependencies on startup
