@@ -31,7 +31,8 @@ class UI:
         self.session = PromptSession(history=FileHistory('.hacx_history'))
     
     def clear(self):
-        os.system('cls' if os.name == 'nt' else 'clear')
+        from ..utils.system import clear_screen
+        clear_screen()
 
     def banner(self):
         self.clear()
@@ -143,15 +144,12 @@ class UI:
 """
         self.console.print(Panel(menu_text.strip(), border_style="blue", title="[bold]Action Menu[/]"))
         self.console.print("[dim]Press the corresponding key...[/]")
+        
+        from ..utils.system import get_char
 
         while True:
-            import msvcrt
-            key = msvcrt.getch()
-            try:
-                char = key.decode("utf-8").lower()
-            except:
-                continue
-
+            char = get_char().lower()
+            
             if char == '1':
                 self._save_all_blocks(code_blocks)
                 break
@@ -170,33 +168,32 @@ class UI:
 
     def _save_specific_block_interactive(self, code_blocks):
         self.console.print("[bold cyan]Press the number of the block to save (1-9)...[/]")
+        from ..utils.system import get_char
+        
         while True:
-            import msvcrt
-            key = msvcrt.getch()
-            try:
-                char = key.decode("utf-8")
-                if char.isdigit() and 1 <= int(char) <= len(code_blocks):
-                    idx = int(char) - 1
-                    lang, code = code_blocks[idx]
-                    filepath = CodeExtractor.save_code_block(code, lang, idx)
-                    self.console.print(f"[bold green]✓ Saved Block {char} to: {filepath}[/]")
-                    break
-            except:
-                pass
+            char = get_char().lower()
+            if not char: continue
+            
+            if char.isdigit() and 1 <= int(char) <= len(code_blocks):
+                idx = int(char) - 1
+                lang, code = code_blocks[idx]
+                filepath = CodeExtractor.save_code_block(code, lang, idx)
+                self.console.print(f"[bold green]✓ Saved Block {char} to: {filepath}[/]")
+                break
+            # Allow exit on other keys if needed, or just loop
 
     def _copy_specific_block_interactive(self, code_blocks):
         self.console.print("[bold cyan]Press the number of the block to copy (1-9)...[/]")
+        from ..utils.system import get_char
+        
         while True:
-            import msvcrt
-            key = msvcrt.getch()
-            try:
-                char = key.decode("utf-8")
-                if char.isdigit() and 1 <= int(char) <= len(code_blocks):
-                    idx = int(char) - 1
-                    lang, code = code_blocks[idx]
-                    pyperclip.copy(code)
-                    self.console.print(f"[bold green]✓ Block {char} copied to clipboard![/]")
-                    break
-            except:
-                pass
+            char = get_char().lower()
+            if not char: continue
+                
+            if char.isdigit() and 1 <= int(char) <= len(code_blocks):
+                idx = int(char) - 1
+                lang, code = code_blocks[idx]
+                pyperclip.copy(code)
+                self.console.print(f"[bold green]✓ Block {char} copied to clipboard![/]")
+                break
 
