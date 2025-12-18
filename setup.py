@@ -13,6 +13,7 @@ setup(
         "pwinput",
         "pyperclip",
         "colorama",
+        "prompt_toolkit"
     ],
     entry_points={
         "console_scripts": [
@@ -21,3 +22,4 @@ setup(
     },
     python_requires=">=3.8",
 )
+
