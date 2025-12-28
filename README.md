@@ -26,6 +26,8 @@
   <h4>
     <a href="https://github.com/BlackTechX011/">GitHub</a>
     <span> · </span>
+    <a href="https://t.me/BlackTechX011">Telegram</a>
+    <span> · </span>
     <a href="https://www.instagram.com/BlackTechX011/">Instagram</a>
     <span> · </span>
     <a href="https://x.com/BlackTechX011">X (Twitter)</a>
@@ -51,6 +53,7 @@ Here is a glimpse of the HacxGPT framework in action.
 - [About The Project](#star2-about-the-project)
   - [What is this Repository?](#grey_question-what-is-this-repository)
   - [The Real HacxGPT: Our Private Model](#gem-the-real-hacxgpt-our-private-model)
+  - [🔒 Internal Hacx-API (i2a)](#-internal-hacx-api-i2a)
 - [Features](#dart-features)
 - [Getting Started](#electric_plug-getting-started)
   - [Prerequisites: API Key](#key-prerequisites-api-key)
@@ -88,6 +91,14 @@ Access to our private model is exclusive. To inquire about services and pricing,
 
 ➡️ **Join our Telegram Channel for more info:** [https://t.me/HacxGPT](https://t.me/HacxGPT)
 
+### 🔒 Internal Hacx-API (i2a)
+
+For verified users and developers, we provide an internal API that connects directly to our specialized models via the **I2P network**. This ensures maximum anonymity and unrestricted access to the core neural links.
+
+Setting up the internal API requires the `i2a` bridge tool and specific credentials retrieved from our Telegram channel.
+
+👉 **[Internal API Setup & Documentation](./internal_api/README.md)**
+
 ---
 
 ## :dart: Features
@@ -109,7 +120,7 @@ To use this framework, you **must** obtain an API key from a supported provider.
 
 1.  **Choose a provider:**
     *   **OpenRouter:** Visit [OpenRouter.ai](https://openrouter.ai/keys) to get a free API key. They provide access to a variety of models.
-    *   **DeepSeek:** Visit the [DeepSeek Platform](https://platform.deepseek.com/api_keys) for a free API key to use their powerful models.
+    *   **Hacx-API:** Visit [Hacx-API](./internal_api/README.md) to get a API key. They provide access to our private models.
 
 2.  **Copy your API key.** You will need to paste it into the script when prompted during the first run.
 
@@ -156,7 +167,7 @@ You can easily switch between API providers.
 
 1.  Open the `hacxgpt/config.py` file in a text editor.
 2.  Locate the `API_PROVIDER` variable at the top of the file.
-3.  Change the value to either `"openrouter"` or `"deepseek"`.
+3.  Change the value to either `"openrouter"` or `"hacx-api"`.
 
     ```python
     # hacxgpt/Config.py
@@ -165,6 +176,10 @@ You can easily switch between API providers.
     API_PROVIDER = "openrouter" 
     ```
 4. Save the file. The script will now use the selected provider's API.
+
+### OR 
+
+just follow instructions in TUI.
 
 ---
 
