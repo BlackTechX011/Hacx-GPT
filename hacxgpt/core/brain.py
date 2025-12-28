@@ -71,22 +71,36 @@ class HacxBrain:
     def chat(self, user_input: str) -> Generator[str, None, None]:
         self.history.append({"role": "user", "content": user_input})
         
+        # Internal API might be very slow due to I2P, use higher timeout and optional streaming
+        is_internal = Config.get_provider() == "hacxgpt_internal"
+        timeout = 1200 if is_internal else 60
+        use_stream = not is_internal # User requested no stream for internal API
+        
         try:
-            stream = self.client.chat.completions.create(
+            response = self.client.chat.completions.create(
                 model=self.model,
                 messages=self.history,
-                stream=True,
-                temperature=0.75
+                stream=use_stream,
+                temperature=0.75,
+                timeout=timeout
             )
             
             full_content = ""
-            for chunk in stream:
-                content = chunk.choices[0].delta.content
-                if content:
-                    full_content += content
-                    yield content
+            if use_stream:
+                for chunk in response:
+                    content = chunk.choices[0].delta.content
+                    if content:
+                        full_content += content
+                        yield content
+            else:
+                # Non-streaming response handling
+                full_content = response.choices[0].message.content or ""
+                yield full_content
             
-            self.history.append({"role": "assistant", "content": full_content})
+            if not full_content:
+                yield "[bold red]Neural Link Error: No response received. (Uplink Timeout or tunnel drop)[/]"
+            else:
+                self.history.append({"role": "assistant", "content": full_content})
             
         except openai.AuthenticationError:
             yield f"Error: 401 Unauthorized for {Config.ACTIVE_PROVIDER.upper()}. Check your API Key."
