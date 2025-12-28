@@ -110,8 +110,8 @@ class App:
                 label = f"HACX-GPT:{current_model}"
                 
                 # Enable multiline for chat
-                prompt = self.ui.get_input(label, multiline=True)
-                if not prompt.strip(): continue
+                prompt = self.ui.get_input(label, multiline=True).strip()
+                if not prompt: continue
                 
                 if prompt.lower() == '/exit': return
                 if prompt.lower() == '/new': 
@@ -144,7 +144,7 @@ class App:
                     continue
 
                 if prompt.lower().startswith('/provider'):
-                    parts = prompt.split(' ')
+                    parts = prompt.split()
                     if len(parts) < 2:
                         self.ui.show_msg("Usage", "/provider <name>", "yellow")
                         continue
@@ -171,7 +171,7 @@ class App:
                     continue
 
                 if prompt.lower().startswith('/model'):
-                    parts = prompt.split(' ')
+                    parts = prompt.split()
                     if len(parts) < 2:
                         self.ui.show_msg("Usage", "/model <name>", "yellow")
                         continue
