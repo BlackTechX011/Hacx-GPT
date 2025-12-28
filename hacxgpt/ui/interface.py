@@ -101,7 +101,8 @@ class UI:
             
             for chunk in content_generator:
                 full_response += chunk
-                live.update(Spinner("dots", text=f"Receiving... ({len(full_response)} bytes)", style="cyan"))
+                # Show the actual markdown content as it streams
+                live.update(Markdown(full_response, code_theme=Config.CODE_THEME))
             
         # Clean format for display
         display_text = full_response.replace("[HacxGPT]:", "").replace("[CODE]:", "").strip()
