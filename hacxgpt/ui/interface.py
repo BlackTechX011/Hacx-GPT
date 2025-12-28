@@ -93,16 +93,20 @@ class UI:
         self.console.print(Rule(f"[bold cyan]{title}[/bold cyan]", style="cyan"))
         
         with Live(
-            Spinner("dots", text="Decryption in progress...", style="cyan"),
+            Spinner("dots", text="Establishing neural link...", style="cyan"),
             console=self.console,
             refresh_per_second=10,
             transient=True
         ) as live:
             
             for chunk in content_generator:
+                if not chunk: continue
                 full_response += chunk
                 # Show the actual markdown content as it streams
                 live.update(Markdown(full_response, code_theme=Config.CODE_THEME))
+            
+            if not full_response:
+                self.console.print("[bold red]✗ Fatal Error: The neural link remained silent (No response).[/]")
             
         # Clean format for display
         display_text = full_response.replace("[HacxGPT]:", "").replace("[CODE]:", "").strip()
