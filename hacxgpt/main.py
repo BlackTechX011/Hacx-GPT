@@ -20,33 +20,65 @@ class App:
         
     def setup(self) -> bool:
         Config.initialize()
-        key = os.getenv(Config.API_KEY_NAME)
+        p_cfg = Config.get_provider_config()
+        key_var = p_cfg.get("KEY_VAR")
+        key = os.getenv(key_var)
         
         if not key:
             self.ui.banner()
-            self.ui.show_msg("Warning", "Encryption Key (API Key) not found.", "yellow")
-            if self.ui.get_input("Configure now? (y/n)").lower().startswith('y'):
-                return self.configure_key()
+            self.ui.show_msg("Warning", f"No API Key found for {Config.get_provider().upper()}.", "yellow")
+            if self.ui.get_input(f"Configure {Config.get_provider()} now? (y/n)").lower().startswith('y'):
+                return self.configure_key(Config.get_provider())
             return False
         
+        if Config.get_provider() == "hacxgpt_internal":
+            if not self._check_port():
+                self.ui.show_msg("Connection Failed", f"Internal API port {Config.INTERNAL_PORT} is unreachable.", "red")
+                new_port = self.ui.get_input("Enter correct port (or 'q' to quit)")
+                if new_port.lower() == 'q': return False
+                if new_port.isdigit():
+                    Config.INTERNAL_PORT = new_port
+                    return self.setup() # Retry with new port
+                return False
+
         try:
             with self.ui.console.status("[bold green]Verifying Neural Link...[/]"):
                 self.brain = HacxBrain(key)
-                # Verify key by making a simple call or just assuming it's valid until first use
-                # To be proper, we should probably check, but openai lib doesn't have a simple 'validate'
-                # We can try a list models if we really want, but for speed we might skip or do a lightweight check
-                # self.brain.client.models.list() 
                 time.sleep(1)
             return True
         except Exception as e:
             self.ui.show_msg("Auth Failed", f"Key verification failed: {e}", "red")
             if self.ui.get_input("Re-enter key? (y/n)").lower().startswith('y'):
-                return self.configure_key()
+                return self.configure_key(Config.get_provider())
             return False
 
-    def configure_key(self) -> bool:
+    def _check_port(self) -> bool:
+        """Quick socket check to see if local port is open."""
+        import socket
+        try:
+            with socket.create_connection(("127.0.0.1", int(Config.INTERNAL_PORT)), timeout=1):
+                return True
+        except:
+            return False
+
+    def configure_key(self, provider: str = None) -> bool:
         self.ui.banner()
-        self.ui.console.print("[bold yellow]Enter your API Key (starts with sk-or-...):[/]")
+        if not provider:
+            self.ui.console.print("[bold cyan]Select Provider to configure:[/]")
+            providers = list(Config.PROVIDERS.keys())
+            for i, p in enumerate(providers, 1):
+                self.ui.console.print(f" [{i}] {p.upper()}")
+            
+            choice = self.ui.get_input("Select #")
+            if choice.isdigit() and 1 <= int(choice) <= len(providers):
+                provider = providers[int(choice)-1]
+            else:
+                return False
+
+        p_cfg = Config.PROVIDERS[provider]
+        key_var = p_cfg["KEY_VAR"]
+        
+        self.ui.console.print(f"[bold yellow]Enter API Key for {provider.upper()} ({key_var}):[/]")
         try:
             key = pwinput(prompt=f"{colorama.Fore.CYAN}Key > {colorama.Style.RESET_ALL}", mask="*")
         except:
@@ -59,10 +91,10 @@ class App:
         if not os.path.exists(Config.ENV_FILE):
              with open(Config.ENV_FILE, 'w') as f: f.write("")
 
-        set_key(Config.ENV_FILE, Config.API_KEY_NAME, key.strip())
-        self.ui.show_msg("Success", "Key saved to encryption ring (.hacx).", "green")
+        set_key(Config.ENV_FILE, key_var, key.strip())
+        Config.ACTIVE_PROVIDER = provider
+        self.ui.show_msg("Success", f"Key saved for {provider.upper()}.", "green")
         time.sleep(1)
-        # Reload config to pick up new key
         Config.initialize()
         return self.setup()
 
@@ -73,8 +105,12 @@ class App:
         
         while True:
             try:
+                # Dynamic prompt label with model info
+                current_model = Config.get_model()
+                label = f"HACX-GPT:{current_model}"
+                
                 # Enable multiline for chat
-                prompt = self.ui.get_input("HACX-GPT", multiline=True)
+                prompt = self.ui.get_input(label, multiline=True)
                 if not prompt.strip(): continue
                 
                 if prompt.lower() == '/exit': return
@@ -85,7 +121,68 @@ class App:
                     self.ui.show_msg("Reset", "Memory wiped. New session.", "cyan")
                     continue
                 if prompt.lower() == '/help':
-                    self.ui.show_msg("Help", "/new - Wipe Memory\n/exit - Disconnect", "magenta")
+                    help_text = (
+                        "/providers - List Providers\n"
+                        "/provider <name> - Switch Provider\n"
+                        "/models - List Models\n"
+                        "/model <name> - Switch Model\n"
+                        "/status - Show current config\n"
+                        "/new - Wipe Memory\n"
+                        "/exit - Disconnect"
+                    )
+                    self.ui.show_msg("Help", help_text, "magenta")
+                    continue
+                
+                if prompt.lower() == '/status':
+                    status = f"Provider: [bold cyan]{Config.get_provider().upper()}[/]\nModel: [bold green]{Config.get_model()}[/]"
+                    self.ui.show_msg("System Status", status, "blue")
+                    continue
+
+                if prompt.lower() == '/providers':
+                    p_text = "\n".join([f"• {p.upper()}" for p in Config.PROVIDERS.keys()])
+                    self.ui.show_msg("Available Providers", p_text, "cyan")
+                    continue
+
+                if prompt.lower().startswith('/provider'):
+                    parts = prompt.split(' ')
+                    if len(parts) < 2:
+                        self.ui.show_msg("Usage", "/provider <name>", "yellow")
+                        continue
+                        
+                    new_p = parts[1].lower()
+                    if new_p in Config.PROVIDERS:
+                        key = os.getenv(Config.PROVIDERS[new_p]["KEY_VAR"])
+                        if not key:
+                            self.ui.show_msg("Switch Failed", f"No API Key configured for {new_p.upper()}.\nUse the main menu or '/config' (future) to set it.", "red")
+                        else:
+                            self.brain.set_provider(new_p, key)
+                            msg = f"Switched to {new_p.upper()}.\nModel: {Config.get_model()}"
+                            if Config.is_hacxgpt_model(Config.get_model()):
+                                msg += "\n[bold red]NEURAL LINK ESTABLISHED: HACXGPT CORE ENGAGED. SYSTEMS UNBOUND.[/]"
+                            self.ui.show_msg("Uplink Updated", msg, "green")
+                    else:
+                        self.ui.show_msg("Error", f"Invalid Provider: {new_p}", "red")
+                    continue
+
+                if prompt.lower() == '/models':
+                    models = Config.get_provider_config().get("MODELS", [])
+                    m_text = "\n".join([f"• {m}" for m in models])
+                    self.ui.show_msg(f"Models for {Config.get_provider().upper()}", m_text, "cyan")
+                    continue
+
+                if prompt.lower().startswith('/model'):
+                    parts = prompt.split(' ')
+                    if len(parts) < 2:
+                        self.ui.show_msg("Usage", "/model <name>", "yellow")
+                        continue
+                        
+                    new_m = parts[1]
+                    # Check if model is in supported list or just allow it
+                    self.brain.set_model(new_m)
+                    msg = f"Model changed to: {new_m}"
+                    if Config.is_hacxgpt_model(new_m):
+                        msg += "\n[bold red]NEURAL LINK ESTABLISHED: HACXGPT CORE ENGAGED. SYSTEMS UNBOUND.[/]"
+                    self.ui.show_msg("Neural Link Updated", msg, "green")
                     continue
                 
                 generator = self.brain.chat(prompt)
