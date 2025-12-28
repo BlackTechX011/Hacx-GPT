@@ -40,6 +40,16 @@ pip install --upgrade pip
 echo "[~] Installing HacxGPT..."
 pip install -e .
 
+# Check for clipboard backend (Linux only)
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    if ! command -v xclip &> /dev/null && ! command -v xsel &> /dev/null && ! command -v wl-copy &> /dev/null; then
+        echo ""
+        echo "[!] Warning: No clipboard backend found (xclip/xsel/wl-clipboard)."
+        echo "    Copy-to-clipboard functionality will be limited."
+        echo "    Recommendation: sudo apt install xclip (or xsel/wl-clipboard)"
+    fi
+fi
+
 echo ""
 echo "======================================"
 echo "      Installation Complete!"
