@@ -10,20 +10,29 @@ class Config:
     PROVIDERS = {
         "openrouter": {
             "BASE_URL": "https://openrouter.ai/api/v1",
-            "MODEL_NAME": "kwaipilot/kat-coder-pro:free", # good model
+            "DEFAULT_MODEL": "kwaipilot/kat-coder-pro:free",
+            "KEY_VAR": "HACX_OPENROUTER_KEY",
+            "MODELS": ["kwaipilot/kat-coder-pro:free"],
         },
-        "deepseek": {
-            "BASE_URL": "https://api.deepseek.com",
-            "MODEL_NAME": "deepseek-chat",
-        },
+        "hacxgpt_internal": {
+            "BASE_URL_TEMPLATE": "http://127.0.0.1:{port}/{key}/v1/",
+            "DEFAULT_MODEL": "hacxgpt-lightning-flash",
+            "KEY_VAR": "HACX_INTERNAL_KEY",
+            "MODELS": ["hacxgpt-lightning-flash"],
+        }
     }
+    
+    # Dynamic State (can be changed in-session)
+    ACTIVE_PROVIDER = "openrouter"
+    ACTIVE_MODEL = None 
+    INTERNAL_PORT = "8790" 
     
     # Defaults
     DEFAULT_PROVIDER = "openrouter"
     
     # System Paths
     ENV_FILE = ".hacx"
-    API_KEY_NAME = "HacxGPT-API"
+    API_KEY_NAME = "HacxGPT-API" # Legacy/Default
     CODE_OUTPUT_DIR = "hacxgpt_code_output"
     
     # Visual Theme
@@ -34,14 +43,23 @@ class Config:
 
     @classmethod
     def get_provider(cls):
-        return os.getenv("HACX_PROVIDER", cls.DEFAULT_PROVIDER)
+        return cls.ACTIVE_PROVIDER
 
     @classmethod
-    def get_provider_config(cls):
-        provider = cls.get_provider()
-        if provider not in cls.PROVIDERS:
-            return cls.PROVIDERS[cls.DEFAULT_PROVIDER]
-        return cls.PROVIDERS[provider]
+    def get_model(cls):
+        if cls.ACTIVE_MODEL:
+            return cls.ACTIVE_MODEL
+        return cls.get_provider_config().get("DEFAULT_MODEL")
+
+    @classmethod
+    def get_provider_config(cls, provider=None):
+        p = provider or cls.get_provider()
+        return cls.PROVIDERS.get(p, cls.PROVIDERS[cls.DEFAULT_PROVIDER])
+
+    @staticmethod
+    def is_hacxgpt_model(model_name: str) -> bool:
+        """Checks if the model is an internal HacxGPT model."""
+        return model_name.lower().startswith("hacxgpt")
 
     @classmethod
     def load_system_prompt(cls):
@@ -66,4 +84,4 @@ class Config:
             if os.path.exists(user_env):
                 env_path = user_env
         
-        load_dotenv(dotenv_path=env_path)
+        load_dotenv(dotenv_path=env_path, override=True)
