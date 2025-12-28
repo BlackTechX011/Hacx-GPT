@@ -1,7 +1,6 @@
 
 import os
 import time
-import pyperclip
 from rich.console import Console
 from rich.panel import Panel
 from rich.markdown import Markdown
@@ -182,9 +181,33 @@ class UI:
                 break
             # Allow exit on other keys if needed, or just loop
 
+    def _save_all_blocks(self, code_blocks):
+        saved_files = []
+        for idx, (lang, code) in enumerate(code_blocks):
+            filepath = CodeExtractor.save_code_block(code, lang, idx)
+            saved_files.append(filepath)
+        
+        self.console.print(f"\n[bold green]✓ Saved {len(saved_files)} file(s) to: {Config.CODE_OUTPUT_DIR}[/]")
+
+    def _copy_all_blocks(self, code_blocks):
+        from ..utils.system import copy_to_clipboard
+        
+        all_code_parts = []
+        for i, (lang, code) in enumerate(code_blocks):
+            separator = "=" * 60
+            block_header = f"# Block {i+1} - Language: {lang.upper()}"
+            all_code_parts.append(f"{separator}\n{block_header}\n{separator}\n\n{code}")
+        
+        all_code = "\n\n".join(all_code_parts)
+        
+        if copy_to_clipboard(all_code):
+            self.console.print(f"[bold green]✓ All code blocks copied to clipboard! ({len(all_code)} characters)[/]")
+        else:
+            self.console.print(f"[bold red]✗ Clipboard failed. Please install xclip/xsel (Linux).[/]")
+
     def _copy_specific_block_interactive(self, code_blocks):
         self.console.print("[bold cyan]Press the number of the block to copy (1-9)...[/]")
-        from ..utils.system import get_char
+        from ..utils.system import get_char, copy_to_clipboard
         
         while True:
             char = get_char().lower()
@@ -193,7 +216,9 @@ class UI:
             if char.isdigit() and 1 <= int(char) <= len(code_blocks):
                 idx = int(char) - 1
                 lang, code = code_blocks[idx]
-                pyperclip.copy(code)
-                self.console.print(f"[bold green]✓ Block {char} copied to clipboard![/]")
+                if copy_to_clipboard(code):
+                    self.console.print(f"[bold green]✓ Block {char} copied to clipboard![/]")
+                else:
+                    self.console.print(f"[bold red]✗ Clipboard failed. Please install xclip/xsel (Linux).[/]")
                 break
 
