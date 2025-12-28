@@ -31,7 +31,7 @@ def check_dependencies():
             print("[\033[92m+\033[0m] Installation complete. Restarting script...")
             time.sleep(1)
             # Re-execute the script
-            os.execv(sys.executable, ['python'] + sys.argv)
+            os.execv(sys.executable, [sys.executable] + sys.argv)
         except Exception as e:
             print("Please manually run: pip install " + " ".join(missing_pip_names))
             sys.exit(1)
@@ -62,4 +62,17 @@ def get_char() -> str:
         finally:
             termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
         return ch
+
+def copy_to_clipboard(text: str) -> bool:
+    """
+    Copies text to clipboard using pyperclip.
+    Handles errors if no clipboard mechanism is found (e.g. on Linux without xclip).
+    """
+    try:
+        import pyperclip
+        pyperclip.copy(text)
+        return True
+    except Exception:
+        # This occurs if pyperclip can't find a backend
+        return False
 
