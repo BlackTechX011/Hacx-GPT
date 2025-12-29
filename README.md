@@ -136,7 +136,7 @@ We provide simple, one-command installation scripts for your convenience.
 1. Open your terminal.
 2. Run the following command. It will download the installer, make it executable, and run it for you.
    ```bash
-   bash <(curl -s https://raw.githubusercontent.com/BlackTechX011/Hacx-GPT/main/install.sh)
+   bash <(curl -s https://raw.githubusercontent.com/BlackTechX011/Hacx-GPT/main/scripts/install.sh)
    ```
 
 <details>
