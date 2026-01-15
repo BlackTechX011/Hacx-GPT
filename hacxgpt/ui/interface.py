@@ -61,11 +61,22 @@ class UI:
     def get_input(self, label: str = "COMMAND", multiline: bool = False) -> str:
         """
         Get input using prompt_toolkit.
-        If multiline is True, user presses Esc+Enter or Alt+Enter to submit.
+        If multiline is True, behavior is swapped:
+        - Enter: Submit
+        - Shift+Enter: New line
         """
-        prompt_text = [
-            ('class:prompt', f"┌──({label})-[~]\n└─> ")
-        ]
+        from prompt_toolkit.key_binding import KeyBindings
+        
+        kb = KeyBindings()
+        
+        if multiline:
+            @kb.add('enter')
+            def _(event):
+                event.current_buffer.validate_and_handle()
+
+            @kb.add('escape', 'enter')
+            def _(event):
+                event.current_buffer.insert_text('\n')
         
         try:
             # We construct the prompt text manually for visual style
@@ -75,6 +86,7 @@ class UI:
                 "└─> ",
                 style=self.pt_style,
                 multiline=multiline,
+                key_bindings=kb if multiline else None,
                 prompt_continuation=lambda width, line_number, is_soft_wrap: '.' * (width - 1) + ' '
             )
             return user_input
@@ -85,34 +97,95 @@ class UI:
 
     def stream_markdown(self, title: str, content_generator):
         """
-        Renders Markdown content in real-time as it streams.
-        No panels are used to avoid copy-paste issues with borders.
+        Renders Markdown content in real-time as it streams, 
+        with specific support for <think> reasoning tags.
         """
+        from rich.console import Group
+        
         full_response = ""
+        thinking_text = ""
+        display_text = ""
+        is_thinking = False
         
         self.console.print(Rule(f"[bold cyan]{title}[/bold cyan]", style="cyan"))
         
         with Live(
             Spinner("dots", text="Establishing neural link...", style="cyan"),
             console=self.console,
-            refresh_per_second=10,
+            refresh_per_second=12,
             transient=True
         ) as live:
             
             for chunk in content_generator:
                 if not chunk: continue
                 full_response += chunk
-                # Show the actual markdown content as it streams
-                live.update(Markdown(full_response, code_theme=Config.CODE_THEME))
+                
+                # Handle thinking tags
+                raw_text = full_response
+                if "<think>" in raw_text:
+                    if "</think>" in raw_text:
+                        # Thinking completed
+                        parts = raw_text.split("</think>")
+                        thinking_text = parts[0].replace("<think>", "").strip()
+                        display_text = parts[1].strip()
+                        is_thinking = False
+                    else:
+                        # Still thinking
+                        thinking_text = raw_text.replace("<think>", "").strip()
+                        display_text = ""
+                        is_thinking = True
+                else:
+                    # Normal response
+                    thinking_text = ""
+                    display_text = raw_text.strip()
+                    is_thinking = False
+
+                # Prepare the UI group
+                ui_elements = []
+                
+                if thinking_text:
+                    ui_elements.append(Panel(
+                        thinking_text, 
+                        title="[dim]🧠 Model Reasoning[/]", 
+                        border_style="dim cyan", 
+                        subtitle="[dim]Thinking...[/]" if is_thinking else "[dim]Thought Process Captured[/]",
+                        width=self.console.width - 4
+                    ))
+                
+                if display_text:
+                    # Remove banners from streaming view if needed
+                    clean_display = display_text.replace("[HacxGPT]:", "").replace("[CODE]:", "").strip()
+                    ui_elements.append(Markdown(clean_display, code_theme=Config.CODE_THEME))
+                
+                if not ui_elements:
+                    live.update(Spinner("dots", text="HacxGPT is processing...", style="cyan"))
+                else:
+                    live.update(Group(*ui_elements))
             
             if not full_response:
                 self.console.print("[bold red]✗ Fatal Error: The neural link remained silent (No response).[/]")
             
-        # Clean format for display
-        display_text = full_response.replace("[HacxGPT]:", "").replace("[CODE]:", "").strip()
+        # Final clean render (static)
+        # 1. Show the final thinking process if it existed
+        final_thinking = ""
+        final_response = full_response
         
-        # Render Markdown directly to console without panel
-        md = Markdown(display_text, code_theme=Config.CODE_THEME)
+        if "<think>" in full_response and "</think>" in full_response:
+            parts = full_response.split("</think>")
+            final_thinking = parts[0].replace("<think>", "").strip()
+            final_response = parts[1].strip()
+            
+            self.console.print(Panel(
+                final_thinking, 
+                title="[bold cyan]🧠 THOUGHT PROCESS[/]", 
+                border_style="cyan", 
+                style="dim",
+                padding=(1, 2)
+            ))
+
+        # 2. Show the final response
+        clean_response = final_response.replace("[HacxGPT]:", "").replace("[CODE]:", "").strip()
+        md = Markdown(clean_response, code_theme=Config.CODE_THEME)
         self.console.print(md)
         self.console.print(Rule(style="dim cyan"))
         
