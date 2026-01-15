@@ -1,34 +1,23 @@
 
 import os
 import sys
+import json
 from dotenv import load_dotenv
 
 class Config:
     """System Configuration & Constants"""
     
-    # API Provider Settings
-    PROVIDERS = {
-        "openrouter": {
-            "BASE_URL": "https://openrouter.ai/api/v1",
-            "DEFAULT_MODEL": "kwaipilot/kat-coder-pro:free",
-            "KEY_VAR": "HACX_OPENROUTER_KEY",
-            "MODELS": ["kwaipilot/kat-coder-pro:free"],
-        },
-        "hacxgpt_internal": {
-            "BASE_URL_TEMPLATE": "http://127.0.0.1:{port}/{key}/v1/",
-            "DEFAULT_MODEL": "hacxgpt-lightning-flash",
-            "KEY_VAR": "HACX_INTERNAL_KEY",
-            "MODELS": ["hacxgpt-lightning-flash"],
-        }
-    }
+    # API Provider Settings (Loaded from providers.json)
+    PROVIDERS = {}
     
     # Dynamic State (can be changed in-session)
-    ACTIVE_PROVIDER = "openrouter"
+    ACTIVE_PROVIDER = "hacxgpt"
     ACTIVE_MODEL = None 
-    INTERNAL_PORT = "8790" 
+    SELECTED_PROVIDER_ALIAS = None
+    SELECTED_MODEL_ALIAS = None
     
     # Defaults
-    DEFAULT_PROVIDER = "openrouter"
+    DEFAULT_PROVIDER = "hacxgpt"
     
     # System Paths
     ENV_FILE = ".hacx"
@@ -42,6 +31,43 @@ class Config:
         USER_PROMPT = "bright_yellow"
 
     @classmethod
+    def load_providers(cls):
+        """Loads provider configuration from providers.json (checks local and package paths)"""
+        try:
+            # Order of preference: 
+            # 1. Local providers.json in CWD
+            # 2. .hacx_providers.json in home folder
+            # 3. Bundled providers.json in package
+            
+            paths_to_check = [
+                os.path.join(os.getcwd(), 'providers.json'),
+                os.path.join(os.path.expanduser("~"), '.hacx_providers.json'),
+                os.path.join(os.path.dirname(os.path.abspath(__file__)), 'providers.json')
+            ]
+            
+            json_path = None
+            for path in paths_to_check:
+                if os.path.exists(path):
+                    json_path = path
+                    break
+            
+            if json_path:
+                with open(json_path, 'r') as f:
+                    cls.PROVIDERS = json.load(f)
+            else:
+                # Critical Fallback
+                cls.PROVIDERS = {
+                    "hacxgpt": {
+                        "base_url": "https://hacxgpt.pages.dev/v1",
+                        "key_var": "HACXGPT_API_KEY",
+                        "models": [{"name": "hacxgpt-lightning-flash", "alias": "Lightning Flash"}],
+                        "default_model": "hacxgpt-lightning-flash"
+                    }
+                }
+        except Exception as e:
+            print(f"Warning: Could not load providers.json: {e}")
+
+    @classmethod
     def get_provider(cls):
         return cls.ACTIVE_PROVIDER
 
@@ -49,12 +75,12 @@ class Config:
     def get_model(cls):
         if cls.ACTIVE_MODEL:
             return cls.ACTIVE_MODEL
-        return cls.get_provider_config().get("DEFAULT_MODEL")
+        return cls.get_provider_config().get("default_model")
 
     @classmethod
     def get_provider_config(cls, provider=None):
         p = provider or cls.get_provider()
-        return cls.PROVIDERS.get(p, cls.PROVIDERS[cls.DEFAULT_PROVIDER])
+        return cls.PROVIDERS.get(p, cls.PROVIDERS.get(cls.DEFAULT_PROVIDER, {}))
 
     @staticmethod
     def is_hacxgpt_model(model_name: str) -> bool:
@@ -76,7 +102,9 @@ class Config:
 
     @staticmethod
     def initialize():
-        """Initialize environment (load .env, etc)"""
+        """Initialize environment (load .env, load configuration, etc)"""
+        Config.load_providers()
+        
         # Look for .hacx in current directory or user home
         env_path = Config.ENV_FILE
         if not os.path.exists(env_path):
@@ -85,3 +113,12 @@ class Config:
                 env_path = user_env
         
         load_dotenv(dotenv_path=env_path, override=True)
+        
+        # Load last used provider/model if saved in env
+        saved_provider = os.getenv("HACX_ACTIVE_PROVIDER")
+        if saved_provider and saved_provider in Config.PROVIDERS:
+            Config.ACTIVE_PROVIDER = saved_provider
+            
+        saved_model = os.getenv("HACX_ACTIVE_MODEL")
+        if saved_model:
+            Config.ACTIVE_MODEL = saved_model
