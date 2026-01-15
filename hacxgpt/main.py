@@ -21,44 +21,25 @@ class App:
     def setup(self) -> bool:
         Config.initialize()
         p_cfg = Config.get_provider_config()
-        key_var = p_cfg.get("KEY_VAR")
+        key_var = p_cfg.get("key_var")
         key = os.getenv(key_var)
         
         if not key:
             self.ui.banner()
             self.ui.show_msg("Warning", f"No API Key found for {Config.get_provider().upper()}.", "yellow")
-            if self.ui.get_input(f"Configure {Config.get_provider()} now? (y/n)").lower().startswith('y'):
-                return self.configure_key(Config.get_provider())
+            if self.ui.get_input("Configure system keys now? (y/n)").lower().startswith('y'):
+                return self.configure_key() # Let user choose which one to configure
             return False
-        
-        if Config.get_provider() == "hacxgpt_internal":
-            if not self._check_port():
-                self.ui.show_msg("Connection Failed", f"Internal API port {Config.INTERNAL_PORT} is unreachable.", "red")
-                new_port = self.ui.get_input("Enter correct port (or 'q' to quit)")
-                if new_port.lower() == 'q': return False
-                if new_port.isdigit():
-                    Config.INTERNAL_PORT = new_port
-                    return self.setup() # Retry with new port
-                return False
-
+            
         try:
             with self.ui.console.status("[bold green]Verifying Neural Link...[/]"):
                 self.brain = HacxBrain(key)
-                time.sleep(1)
+                time.sleep(0.5)
             return True
         except Exception as e:
             self.ui.show_msg("Auth Failed", f"Key verification failed: {e}", "red")
             if self.ui.get_input("Re-enter key? (y/n)").lower().startswith('y'):
                 return self.configure_key(Config.get_provider())
-            return False
-
-    def _check_port(self) -> bool:
-        """Quick socket check to see if local port is open."""
-        import socket
-        try:
-            with socket.create_connection(("127.0.0.1", int(Config.INTERNAL_PORT)), timeout=1):
-                return True
-        except:
             return False
 
     def configure_key(self, provider: str = None) -> bool:
@@ -76,9 +57,23 @@ class App:
                 return False
 
         p_cfg = Config.PROVIDERS[provider]
-        key_var = p_cfg["KEY_VAR"]
+        key_var = p_cfg["key_var"]
         
-        self.ui.console.print(f"[bold yellow]Enter API Key for {provider.upper()} ({key_var}):[/]")
+        # 1. Select Model
+        self.ui.console.print(f"\n[bold cyan]Select Default Model for {provider.upper()}:[/]")
+        models = p_cfg.get("models", [])
+        for i, m in enumerate(models, 1):
+            self.ui.console.print(f" [{i}] {m['alias']} ({m['name']})")
+        
+        m_choice = self.ui.get_input("Select Model #")
+        selected_model = None
+        if m_choice.isdigit() and 1 <= int(m_choice) <= len(models):
+            selected_model = models[int(m_choice)-1]['name']
+        else:
+            selected_model = p_cfg.get("default_model")
+
+        # 2. Enter Key
+        self.ui.console.print(f"\n[bold yellow]Enter API Key for {provider.upper()} ({key_var}):[/]")
         try:
             key = pwinput(prompt=f"{colorama.Fore.CYAN}Key > {colorama.Style.RESET_ALL}", mask="*")
         except:
@@ -92,8 +87,13 @@ class App:
              with open(Config.ENV_FILE, 'w') as f: f.write("")
 
         set_key(Config.ENV_FILE, key_var, key.strip())
+        set_key(Config.ENV_FILE, "HACX_ACTIVE_PROVIDER", provider)
+        set_key(Config.ENV_FILE, "HACX_ACTIVE_MODEL", selected_model)
+        
         Config.ACTIVE_PROVIDER = provider
-        self.ui.show_msg("Success", f"Key saved for {provider.upper()}.", "green")
+        Config.ACTIVE_MODEL = selected_model
+        
+        self.ui.show_msg("Success", f"Configuration saved for {provider.upper()}.", "green")
         time.sleep(1)
         Config.initialize()
         return self.setup()
@@ -101,7 +101,7 @@ class App:
     def run_chat(self):
         if not self.brain: return
         self.ui.banner()
-        self.ui.show_msg("Connected", "HacxGPT Uplink Established.\nType '/help' for commands.\n[dim]Tip: Use Alt+Enter or Esc+Enter for newlines.[/]", "green")
+        self.ui.show_msg("Connected", "HacxGPT Uplink Established.\nType '/help' for commands.\n[dim]Tip: Press Enter to send, Alt+Enter for newlines.[/]", "green")
         
         while True:
             try:
@@ -126,6 +126,7 @@ class App:
                         "/provider <name> - Switch Provider\n"
                         "/models - List Models\n"
                         "/model <name> - Switch Model\n"
+                        "/setup - Configure API Keys\n"
                         "/status - Show current config\n"
                         "/new - Wipe Memory\n"
                         "/exit - Disconnect"
@@ -133,6 +134,11 @@ class App:
                     self.ui.show_msg("Help", help_text, "magenta")
                     continue
                 
+                if prompt.lower() == '/setup':
+                    if self.configure_key():
+                        self.ui.show_msg("System Updated", "Neural links re-initialized with new credentials.", "green")
+                    continue
+
                 if prompt.lower() == '/status':
                     status = f"Provider: [bold cyan]{Config.get_provider().upper()}[/]\nModel: [bold green]{Config.get_model()}[/]"
                     self.ui.show_msg("System Status", status, "blue")
@@ -151,9 +157,10 @@ class App:
                         
                     new_p = parts[1].lower()
                     if new_p in Config.PROVIDERS:
-                        key = os.getenv(Config.PROVIDERS[new_p]["KEY_VAR"])
+                        p_cfg = Config.PROVIDERS[new_p]
+                        key = os.getenv(p_cfg["key_var"])
                         if not key:
-                            self.ui.show_msg("Switch Failed", f"No API Key configured for {new_p.upper()}.\nUse the main menu or '/config' (future) to set it.", "red")
+                            self.ui.show_msg("Switch Failed", f"No API Key configured for {new_p.upper()}.\nUse the main menu to set it.", "red")
                         else:
                             self.brain.set_provider(new_p, key)
                             msg = f"Switched to {new_p.upper()}.\nModel: {Config.get_model()}"
