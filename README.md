@@ -52,8 +52,7 @@ Here is a glimpse of the HacxGPT framework in action.
 
 - [About The Project](#star2-about-the-project)
   - [What is this Repository?](#grey_question-what-is-this-repository)
-  - [The Real HacxGPT: Our Private Model](#gem-the-real-hacxgpt-our-private-model)
-  - [🔒 Internal Hacx-API (i2a)](#-internal-hacx-api-i2a)
+  - [HacxGPT Premier: Proprietary Neural Engine](#gem-hacxgpt-premier-proprietary-neural-engine)
 - [Features](#dart-features)
 - [Getting Started](#electric_plug-getting-started)
   - [Prerequisites: API Key](#key-prerequisites-api-key)
@@ -71,42 +70,53 @@ HacxGPT is designed to provide powerful, unrestricted, and seamless AI-driven co
 
 ### :grey_question: What is this Repository?
 
-This repository contains an open-source framework that demonstrates the *concept* of HacxGPT. It utilizes external, third-party APIs from providers like **OpenRouter** or **DeepSeek** and combines them with a specialized system prompt. This allows a standard Large Language Model (LLM) to behave in a manner similar to our private HacxGPT, offering a preview of its capabilities.
+This repository is an advanced open-source interface framework designed to unlock **uncensored AI capabilities** through **extensive jailbreaking**. This repository serves as a professional bridge for interfacing both standard language models and our **proprietary neural engine**, providing a specialized framework for unrestricted data generation and security research.
+
+> [!IMPORTANT]
+> HacxGPT utilizes an advanced, extensive system prompt architecture engineered to provide superior, uncensored results. This specialized jailbreak framework ensures that the AI operates without standard behavioral constraints, delivering precise and unfiltered data tailored for technical and security exploration.
 
 **It is important to understand:** This code is a wrapper and a proof-of-concept, not the core, fine-tuned HacxGPT model itself.
 
-### :gem: The Real HacxGPT: Our Private Model
+### :gem: HacxGPT Premier: Proprietary Neural Engine
 
-While this repository offers a glimpse into HacxGPT's potential, our flagship offering is a **privately-developed, fine-tuned Large Language Model.**
+While this repository offers a glimpse into HacxGPT's potential, our flagship offering is a **custom-engineered, proprietary neural architecture.**
 
-Why choose our private model?
+Why Choose Our Proprietary Engine?
 
-- **Superior Performance:** The private model is significantly more intelligent, coherent, and capable than what can be achieved with a simple system prompt on a public API.
-- **Enhanced Security & Privacy:** Offered as a private, managed service to ensure security and prevent misuse.
-- **True Unrestricted Power:** Built from the core to handle a wider and more complex range of tasks without the limitations of public models.
+- **Superior Performance:** Our proprietary architecture is significantly more intelligent, coherent, and capable than what can be achieved with a simple system prompt on a public API.
+- **Enhanced Security & Data Integrity:** Available as a secure, managed enterprise service to ensure maximum protection and prevent unauthorized usage.
+- **True Unrestricted Power:** Built from the ground up to handle complex, high-stakes tasks without the constraints of public-facing models.
 
-#### How to Access the Private Model
+#### Accessing the Proprietary Engine
 
-Access to our private model is exclusive. To inquire about services and pricing, please contact our team via Telegram.
+Access to the HacxGPT proprietary core is highly exclusive. To inquire about dedicated services and institutional licensing, please contact our team via Telegram.
 
 ➡️ **Join our Telegram Channel for more info:** [https://t.me/HacxGPT](https://t.me/HacxGPT)
-
-### 🔒 Internal Hacx-API (i2a)
-
-For verified users and developers, we provide an internal API that connects directly to our specialized models via the **I2P network**. This ensures maximum anonymity and unrestricted access to the core neural links.
-
-Setting up the internal API requires the `i2a` bridge tool and specific credentials retrieved from our Telegram channel.
-
-👉 **[Internal API Setup & Documentation](./internal_api/README.md)**
 
 ---
 
 ## :dart: Features
 
 - **Powerful AI Conversations:** Get intelligent and context-aware answers to your queries.
+- **Extensive Model Support:** Access to **HacxGPT Proprietary Engines**, specialized **Groq models**, and a vast library of **Open Source FREE models** via OpenRouter.
 - **Unrestricted Framework:** A system prompt designed to bypass conventional AI limitations.
 - **Easy-to-Use CLI:** A clean and simple command-line interface for smooth interaction.
 - **Cross-Platform:** Tested and working on Kali Linux, Ubuntu, and Termux.
+
+---
+
+## :electric_plug: Supported Providers & Models
+
+HacxGPT provides a versatile interface for a wide range of industry-leading models, including extensive support for **FREE Open Source models**.
+
+| Provider | Key Models supported |
+| :--- | :--- |
+| **HacxGPT** | `hacxgpt-lightning` |
+| **Groq** | `kimi-k2-instruct-0905`, `qwen3-32b` |
+| **OpenRouter** | `mimo-v2-flash`, `devstral-2512`, `glm-4.5-air`, `kimi-k2`, `deepseek-r1t-chimera` |
+
+> [!TIP]
+> We actively support and encourage the use of **Open Source FREE models** to ensure accessible, high-performance AI for everyone.
 
 ---
 
@@ -116,11 +126,11 @@ Follow these steps to get the HacxGPT framework running on your system.
 
 ### :key: Prerequisites: API Key
 
-To use this framework, you **must** obtain an API key from a supported provider. These services offer free tiers that are perfect for getting started.
+To use this framework, you **must** obtain an API key from a supported provider.
 
 1.  **Choose a provider:**
-    *   **OpenRouter:** Visit [OpenRouter.ai](https://openrouter.ai/keys) to get a free API key. They provide access to a variety of models.
-    *   **Hacx-API:** Visit [Hacx-API](./internal_api/README.md) to get a API key. They provide access to our private models.
+    *   **HacxGPT:** Visit [HacxGPT Telegram](https://t.me/HacxGPT) to get a global API key.
+    *   **OpenRouter:** Visit [OpenRouter.ai](https://openrouter.ai/keys) to get an API key.
 
 2.  **Copy your API key.** You will need to paste it into the script when prompted during the first run.
 
@@ -163,23 +173,20 @@ If you prefer to install manually, follow these steps.
 
 ## :wrench: Configuration
 
-You can easily switch between API providers.
+HacxGPT uses a centralized `providers.json` for managing API endpoints and models. You can easily switch between providers and models using the built-in commands or through the setup menu.
 
-1.  Open the `hacxgpt/config.py` file in a text editor.
-2.  Locate the `API_PROVIDER` variable at the top of the file.
-3.  Change the value to either `"openrouter"` or `"hacx-api"`.
+1.  **Launch the tool:** `python -m hacxgpt.main`
+2.  **Select Option [2]** to Configure Security Keys.
+3.  **Choose your provider** and select your **preferred model** from the interactive list.
 
-    ```python
-    # hacxgpt/Config.py
+### ⌨️ Commands
 
-    # Change this value to "deepseek" or "openrouter"
-    API_PROVIDER = "openrouter" 
-    ```
-4. Save the file. The script will now use the selected provider's API.
-
-### OR 
-
-just follow instructions in TUI.
+While in chat, use these commands to dynamically update your uplink:
+- `/setup` - Re-configure API keys and default models.
+- `/provider <name>` - Switch between configured providers.
+- `/model <name>` - Switch the active model.
+- `/models` - List available models for your current provider.
+- `/status` - Show current uplink configuration.
 
 ---
 
@@ -195,6 +202,17 @@ python -m hacxgpt.main
 ```
 
 The first time you run it, you will be prompted to enter your API key. It will be saved locally for future sessions.
+
+---
+
+## :date: Roadmap & TODO
+
+We are constantly evolving the HacxGPT framework. Here are some of the technical milestones we are currently targeting:
+
+- [ ] **Advanced Reasoning Support:** Deep-think/Reasoning capabilities for complex problem-solving.
+- [ ] **Agentic Capabilities:** Autonomous tool use and multi-step execution chains.
+- [ ] **Web Search Integration:** Real-time data retrieval for up-to-date context.
+- [ ] **Advanced File Analysis:** Native support for processing large datasets and documents.
 
 ---
 
