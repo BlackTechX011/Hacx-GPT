@@ -24,16 +24,8 @@ class HacxBrain:
     def _init_client(self):
         config = Config.get_provider_config()
         
-        base_url = config.get("BASE_URL")
+        base_url = config.get("base_url")
         api_key = self.api_key
-        
-        # Handle dynamic templates (e.g., for HacxGPT Internal)
-        if "BASE_URL_TEMPLATE" in config:
-            base_url = config["BASE_URL_TEMPLATE"].format(
-                key=self.api_key,
-                port=Config.INTERNAL_PORT
-            )
-            api_key = "HacxGPT" # Placeholder for internal API
 
         self.client = openai.OpenAI(
             api_key=api_key,
@@ -71,10 +63,9 @@ class HacxBrain:
     def chat(self, user_input: str) -> Generator[str, None, None]:
         self.history.append({"role": "user", "content": user_input})
         
-        # Internal API might be very slow due to I2P, use higher timeout and optional streaming
-        is_internal = Config.get_provider() == "hacxgpt_internal"
-        timeout = 1200 if is_internal else 60
-        use_stream = not is_internal # User requested no stream for internal API
+        # Use standard timeout since internal I2P is gone
+        timeout = 60
+        use_stream = True
         
         try:
             response = self.client.chat.completions.create(
