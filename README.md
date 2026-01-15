@@ -131,6 +131,7 @@ To use this framework, you **must** obtain an API key from a supported provider.
 1.  **Choose a provider:**
     *   **HacxGPT:** Visit [HacxGPT Telegram](https://t.me/HacxGPT) to get a global API key.
     *   **OpenRouter:** Visit [OpenRouter.ai](https://openrouter.ai/keys) to get an API key.
+    *   ""Groq:** Visit [console.groq.com/keys](https://console.groq.com/keys) to get an API key.
 
 2.  **Copy your API key.** You will need to paste it into the script when prompted during the first run.
 
@@ -238,3 +239,4 @@ Contributions are what make the open-source community such an amazing place to l
 Distributed under the Personal-Use Only License (PUOL) 1.0. See `LICENSE` for more information.
 
 ***
+
