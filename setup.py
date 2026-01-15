@@ -6,6 +6,10 @@ setup(
     description="Advanced Uncensored AI Terminal Interface",
     author="BlackTechX",
     packages=find_packages(),
+    include_package_data=True,
+    package_data={
+        "hacxgpt": ["providers.json", "prompts/*.md"],
+    },
     install_requires=[
         "openai",
         "rich",
