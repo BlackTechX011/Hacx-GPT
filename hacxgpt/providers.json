@@ -1,0 +1,59 @@
+{
+    "hacxgpt": {
+        "base_url": "https://hacxgpt.pages.dev/v1",
+        "key_var": "HACXGPT_API_KEY",
+        "models": [
+            {
+                "name": "hacxgpt-lightning-flash",
+                "alias": "Lightning Flash (Default)"
+            }
+        ],
+        "default_model": "hacxgpt-lightning-flash"
+    },
+    "groq": {
+        "base_url": "https://api.groq.com/openai/v1",
+        "key_var": "HACX_GROQ_KEY",
+        "models": [
+            {
+                "name": "moonshotai/kimi-k2-instruct-0905",
+                "alias": "Kimi K2 Instruct"
+            },
+            {
+                "name": "qwen/qwen3-32b",
+                "alias": "Qwen 3 32B"
+            }
+        ],
+        "default_model": "qwen/qwen3-32b"
+    },
+    "openrouter": {
+        "base_url": "https://openrouter.ai/api/v1",
+        "key_var": "HAC_OPENROUTER_KEY",
+        "models": [
+            {
+                "name": "xiaomi/mimo-v2-flash:free",
+                "alias": "Xiaomi MIMO v2 (Free)"
+            },
+            {
+                "name": "mistralai/devstral-2512:free",
+                "alias": "Mistral Devstral (Free)"
+            },
+            {
+                "name": "z-ai/glm-4.5-air:free",
+                "alias": "GLM 4.5 Air (Free)"
+            },
+            {
+                "name": "moonshotai/kimi-k2:free",
+                "alias": "Moonshot Kimi K2 (Free)"
+            },
+            {
+                "name": "tngtech/deepseek-r1t2-chimera:free",
+                "alias": "DeepSeek R1T2 Chimera (Free)"
+            },
+            {
+                "name": "tngtech/deepseek-r1t-chimera:free",
+                "alias": "DeepSeek R1T Chimera (Free)"
+            }
+        ],
+        "default_model": "xiaomi/mimo-v2-flash:free"
+    }
+}
